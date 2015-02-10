@@ -1,0 +1,154 @@
+{
+  "groupdef": [
+    {
+      "name": "jfinal-web",
+      "taskdef": [
+        {
+          "name": "model",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
+          "filename": "{{entity.name.lower() | capitalize}}.java",
+          "templatePath": "java/model.ftl"
+        },
+        {
+          "name": "ddl",
+          "type": "single",
+          "folder": "sql",
+          "filename": "{{project.name}}.sql",
+          "templatePath": "db/mysql/ddl.ftl"
+        },
+        {
+          "name": "appconfig",
+          "type": "single",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}",
+          "filename": "{{project.name | capitalize }}Config.java",
+          "templatePath": "java/config.ftl"
+        },
+        {
+          "name": "config",
+          "type": "single",
+          "folder": "src/main/resources",
+          "filename": "config.txt",
+          "templatePath": "config/txt.ftl"
+        },
+        {
+          "name": "webxml",
+          "type": "single",
+          "folder": "src/main/webapp/WEB-INF",
+          "filename": "web.xml",
+          "templatePath": "config/web.ftl"
+        },
+        {
+          "name": "indexController",
+          "type": "single",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}",
+          "filename": "IndexController.java",
+          "templatePath": "java/index.ftl"
+        },
+        {
+          "name": "validate",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
+          "filename": "{{entity.name.lower() | capitalize}}Validator.java",
+          "templatePath": "java/validator.ftl"
+        },
+        {
+          "name": "controller",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
+          "filename": "{{entity.name.lower() | capitalize}}Controller.java",
+          "templatePath": "java/controller.ftl"
+        },
+        {
+          "name": "searcher",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
+          "filename": "{{entity.name.lower() | capitalize}}Searcher.java",
+          "templatePath": "java/searcher.ftl"
+        },
+        {
+          "name": "add",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "add.html",
+          "templatePath": "view/dwz/freemarker/add.ftl"
+        },
+        {
+          "name": "log4j",
+          "type": "single",
+          "folder": "src/main/resources",
+          "filename": "log4j.properties",
+          "templatePath": "config/log4j.ftl"
+        },
+        {
+          "name": "index",
+          "type": "single",
+          "folder": "src/main/webapp",
+          "filename": "index.html",
+          "templatePath": "view/dwz/freemarker/index.ftl"
+        },
+        {
+          "name": "menu",
+          "type": "single",
+          "folder": "src/main/webapp",
+          "filename": "menu.html",
+          "templatePath": "view/dwz/freemarker/menu.ftl"
+        },
+        {
+          "name": "edit",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "edit.html",
+          "templatePath": "view/dwz/freemarker/edit.ftl"
+        },
+        {
+          "name": "form",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "_form.html",
+          "templatePath": "view/dwz/freemarker/_form.ftl"
+        },
+        {
+          "name": "page",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "index.html",
+          "templatePath": "view/dwz/freemarker/page.ftl"
+        },
+        {
+          "name": "view",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "view.html",
+          "templatePath": "view/dwz/freemarker/view.ftl"
+        },
+        {
+          "name": "build",
+          "type": "single",
+          "folder": "",
+          "filename": "pom.xml",
+          "templatePath": "build/maven.ftl"
+        },
+        {
+          "name": "runscript",
+          "type": "single",
+          "folder": "",
+          "filename": "run.bat",
+          "templatePath": "build/run.ftl"
+        }
+      ]
+    },
+    {
+      "name": "mybatis-base",
+      "taskdef": [
+        {
+          "name": "ddl",
+          "type": "single",
+          "folder": "sql",
+          "filename": "{{project.name}}.sql",
+          "templatePath": "db/mysql/ddl.ftl"
+        }
+      ]
+    }
+  ]
+}
