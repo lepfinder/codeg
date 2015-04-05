@@ -1,7 +1,7 @@
 {
   "project": {
     "name": "demo",
-    "port": "89",
+    "port": "8888",
     "desc": "演示项目",
     "packageName": "com.xiyang.demo",
     "group": "jfinal-web"

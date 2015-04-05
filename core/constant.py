@@ -3,7 +3,7 @@
 import os
 from jinja2 import Environment, FileSystemLoader
 
-FS = "\\"
+FS = "/"
 BASEPATH = os.getcwd()
 PROJECT_DEF_PATH = os.path.join(BASEPATH,"project_def")
 CONF_PATH = os.path.join(BASEPATH,"conf","codeg.json")

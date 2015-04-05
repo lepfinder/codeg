@@ -135,6 +135,13 @@
           "folder": "",
           "filename": "run.bat",
           "templatePath": "build/run.ftl"
+        },
+        {
+          "name": "runscript",
+          "type": "single",
+          "folder": "",
+          "filename": "run.sh",
+          "templatePath": "build/run.ftl"
         }
       ]
     },
