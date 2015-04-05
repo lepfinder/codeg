@@ -6,11 +6,11 @@ USE {{project.name}} ;
 DROP TABLE IF EXISTS `{{entity.name}}`;
 CREATE TABLE `{{entity.name}}` (
     {% for field in entity.fieldList %}
-    `{{field.name}}` {{field.dbtype}}{% if field.longness > 0 %}({{field.longness}}){% endif %} COMMENT '{{field.label}}' {% if field.isPrimaryKey==1 %}AUTO_INCREMENT{% endif %},
+    `{{field.dbName}}` {{field.dbType}} COMMENT '{{field.label}}' {% if field.isPrimaryKey==1 %}AUTO_INCREMENT{% endif %},
     {% endfor %}
     {% for field in entity.fieldList %}
-    {% if field.isPrimaryKey=="1" %}
-     PRIMARY KEY (`{{field.name}}`)
+    {% if field.isPrimaryKey==1 %}
+     PRIMARY KEY (`{{field.dbName}}`)
     {% endif %}
     {% endfor %}
 )ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='{{entity.label}}';

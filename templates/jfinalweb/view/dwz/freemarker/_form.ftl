@@ -1,14 +1,14 @@
 <div class="pageFormContent" layoutH="56">
     {% for field in entity.fieldList %}
-        {% if field.isPrimaryKey=="1" %}
-            <input type="hidden" name="{{entity.name}}.{{field.name}}" id="{{entity.name}}.{{field.name}}"
-                   value="${ ({{entity.name}}.{{field.name}})! }">
+        {% if field.isPrimaryKey==1 %}
+            <input type="hidden" name="{{entity.name}}.{{field.javaName}}" id="{{entity.name}}.{{field.javaName}}"
+                   value="${ ({{entity.name}}.{{field.javaName}})! }">
         {% else %}
             <p>
                 <label>{{field.label}}：</label>
-                <input type="text" name="{{entity.name}}.{{field.name}}" id="{{entity.name}}.{{field.name}}"
+                <input type="text" name="{{entity.name}}.{{field.javaName}}" id="{{entity.name}}.{{field.javaName}}"
                        class="textInput" size="30"
-                       value="${ ({{entity.name}}.{{field.name}})! }"/>
+                       value="${ ({{entity.name}}.{{field.javaName}})! }"/>
             </p>
        {% endif %}
     {% endfor %}

@@ -15,41 +15,23 @@
     {
       "name": "user",
       "label": "用户",
-      "field": [
-        {
-          "label": "",
-          "fieldName": "id",
-          "fieldType": "int",
-          "longness": "9",
-          "isPrimaryKey": "true"
-        },
-        {
-          "label": "用户姓名",
-          "fieldName": "name",
-          "fieldType": "varchar",
-          "longness": "20",
-          "isPrimaryKey": "false"
-        }
+      "fieldHead" :[
+        "label","fieldName","fieldType","javaName","javaType","isPrimaryKey","isSearchable"
+      ],
+      "fields":[
+        ["","id","int(9)","id","Integer",1,0],
+        ["用户姓名","name","varchar(20)","name","String",0,1]
       ]
     },
     {
       "name": "category",
       "label": "分类",
-      "field": [
-        {
-          "label": "",
-          "fieldName": "id",
-          "fieldType": "int",
-          "longness": "9",
-          "isPrimaryKey": "true"
-        },
-        {
-          "label": "分类名称",
-          "fieldName": "name",
-          "fieldType": "varchar",
-          "longness": "20",
-          "isPrimaryKey": "false"
-        }
+      "fieldHead" :[
+        "label","fieldName","fieldType","javaName","javaType","isPrimaryKey","isSearchable"
+      ],
+      "fields":[
+        ["","id","int(9)","id","Integer",1,0],
+        ["分类名称","name","varchar(20)","name","String",0,1]
       ]
     }
   ]

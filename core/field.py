@@ -5,22 +5,14 @@ import logging
 
 class Field():
 
-    def __init__(self,name,label,isPrimaryKey,isSearchable,fieldType,longness):
-        self.name = name
+    def __init__(self,label,dbName,dbType,javaName,javaType,isPrimaryKey,isSearchable):
         self.label = label
+        self.dbName = dbName
+        self.dbType = dbType
+        self.javaName = javaName
+        self.javaType = javaType
         self.isPrimaryKey = isPrimaryKey
         self.isSearchable = isSearchable
-        self.fieldType = fieldType
-        self.longness = longness
-        self.dbtype = self.get_dbtype()
     
     def to_dict(self):
         return self.__dict__
-
-    def get_dbtype(self):
-        if "int" == self.fieldType:
-            return "int"
-        elif "long" == self.fieldType:
-            return "long"
-        elif "String" == self.fieldType:
-            return "varchar"

@@ -18,50 +18,24 @@
       "name": "user",
       "label": "用户",
       "fieldHead" :[
-        "label","fieldName","fieldType","longness","isPrimaryKey","isSearchable"
+        "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
       ],
       "fields":[
-        ["","id","int",9,1,0]
-      ],
-      "field": [
-        {
-          "label": "",
-          "fieldName": "id",
-          "fieldType": "int",
-          "longness": "9",
-          "isPrimaryKey": "1",
-          "isSearchable": "0"
-        },
-        {
-          "label": "用户姓名",
-          "fieldName": "name",
-          "fieldType": "String",
-          "longness": "20",
-          "isPrimaryKey": "0",
-          "isSearchable": "1"
-        }
+        ["","id","int(9)","id","Integer",1,0],
+        ["用户姓名","name","varchar(20)","name","String",0,1],
+        ["手机号","mobile","varchar(20)","mobile","String",0,1],
+        ["邮箱","email","varchar(20)","email","String",0,1]
       ]
     },
     {
       "name": "category",
       "label": "分类",
-      "field": [
-        {
-          "label": "",
-          "fieldName": "id",
-          "fieldType": "int",
-          "longness": "9",
-          "isPrimaryKey": "1",
-          "isSearchable": "0"
-        },
-        {
-          "label": "分类名称",
-          "fieldName": "name",
-          "fieldType": "String",
-          "longness": "20",
-          "isPrimaryKey": "0",
-          "isSearchable": "1"
-        }
+      "fieldHead" :[
+        "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
+      ],
+      "fields":[
+        ["","id","int(9)","id","Integer",1,0],
+        ["分类名称","name","varchar(20)","name","String",0,1]
       ]
     }
   ]

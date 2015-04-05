@@ -41,9 +41,9 @@ public class {{project.name | capitalize}}Config extends JFinalConfig {
 		arp.setContainerFactory(new CaseInsensitiveContainerFactory()).setShowSql(true);
 	{% for entity in project.entityList %}
 		{% for field in entity.fieldList %}
-		{% if field.isPrimaryKey=="1" and field.name !="id" %}
-		arp.addMapping("{{entity.name}}","{{field.name}}", {{entity.name| capitalize}}.class);	
-		{% elif field.isPrimaryKey=="1"%}
+		{% if field.isPrimaryKey==1 and field.javaName !="id" %}
+		arp.addMapping("{{entity.name}}","{{field.javaName}}", {{entity.name| capitalize}}.class);	
+		{% elif field.isPrimaryKey==1%}
 		arp.addMapping("{{entity.name}}", {{entity.name| capitalize}}.class);
 		{% endif %}
 		{% endfor %}

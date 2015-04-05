@@ -73,6 +73,7 @@ class Manager():
         logging.info("pdef_path:"+self.pdef_path);
         pdef = json.loads(open(self.pdef_path).read())
 
+        #print pdef
         #加载项目定义信息
         self.project = Project(
             pdef['project']['name'],
@@ -91,18 +92,21 @@ class Manager():
             entity = Entity(edef['name'],edef['label'])
 
             field_list = []
-            for fdef in edef['field']:
+            for fdef in edef['fields']:
                 field_list.append(Field(
-                    fdef['fieldName'],
-                    fdef['label'],
-                    fdef['isPrimaryKey'],
-                    fdef['isSearchable'],
-                    fdef['fieldType'],
-                    fdef['longness'],
+                    fdef[0],
+                    fdef[1],
+                    fdef[2],
+                    fdef[3],
+                    fdef[4],
+                    fdef[5],
+                    fdef[6]
                 ))
 
             entity.set_fields(field_list)
 
             entityList.append(entity)
+
+            print entity.to_dict()
 
         self.project.set_entitys(entityList)

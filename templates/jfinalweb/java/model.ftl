@@ -13,12 +13,12 @@ public class {{entityName}} extends Model<{{entityName}}> {
 
 	public static final {{entityName}} DAO = new {{entityName}}();
 	{% for field in entity.fieldList %}
-	public {{field.fieldType}} get{{field.name | capitalize}}(){
-		return get("{{field.name}}");
+	public {{field.javaType}} get{{field.javaName | capitalize}}(){
+		return get("{{field.javaName}}");
 	}
 
-	public void set{{field.name | capitalize}}({{field.fieldType}} {{field.name}}){
-		set("{{field.name}}",{{field.name}});
+	public void set{{field.javaName | capitalize}}({{field.javaType}} {{field.javaName}}){
+		set("{{field.javaName}}",{{field.javaName}});
 	}
 	{% endfor %}
 	public Page<{{entityName}}> page(int pageNumber, int pageSize) {

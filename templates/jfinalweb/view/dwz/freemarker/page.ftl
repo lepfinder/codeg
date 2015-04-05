@@ -10,10 +10,10 @@
             <table class="searchContent">
                 <tr>
 					{% for field in entity.fieldList %}
-						{% if field.isPrimaryKey=="1" %}
+						{% if field.isPrimaryKey==1 %}
                             <td>
-								{{field.label}}:<input type="text" name="{{entity.name}}.f_{{field.name}}" />
-								<input type="hidden" name="{{entity.name}}.f_{{field.name}}_op" value="LIKE" />
+								{{field.label}}:<input type="text" name="{{entity.name}}.f_{{field.javaNmae}}" />
+								<input type="hidden" name="{{entity.name}}.f_{{field.javaNmae}}_op" value="LIKE" />
                             </td>
                        {% endif %}
 					{% endfor %}
@@ -52,7 +52,7 @@
         <thead>
         <tr>
             {% for field in entity.fieldList %}
-				{% if field.isPrimaryKey=="0" %}
+				{% if field.isPrimaryKey==0 %}
                     <th width="80" align="center">{{field.label}}</th>
                 {% endif %}
 			{% endfor %}
@@ -64,9 +64,9 @@
         
         <tr target="sid_user" rel="${item.id}">
             {% for field in entity.fieldList %}
-				{% if field.isPrimaryKey=="0" %}
+				{% if field.isPrimaryKey==0 %}
                     <td>
-                        ${item.{{field.name}} }
+                        ${item.{{field.javaName}} }
                     </td>
                 {% endif %}
 			{% endfor %}

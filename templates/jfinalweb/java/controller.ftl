@@ -41,8 +41,8 @@ public class {{entity.name | capitalize}}Controller extends Controller {
 	}
 	public void excel() {
 		List<{{entity.name|capitalize}}> data = {{entity.name|capitalize}}.DAO.page(getParaToInt("pageNum",1),getParaToInt("numPerPage",10)).getList();
-		String[] headers = new String[]{ {% for field in entity.fieldList %}{% if field.isPrimaryKey=="1" %}"{{field.name}}",{% endif %}{% endfor %} };
-		String[] columns = new String[]{ {% for field in entity.fieldList %}{% if field.isPrimaryKey!="1" %}"{{field.name}}",{% endif %}{% endfor %} };
+		String[] headers = new String[]{ {% for field in entity.fieldList %}{% if field.isPrimaryKey==1 %}"{{field.javaName}}",{% endif %}{% endfor %} };
+		String[] columns = new String[]{ {% for field in entity.fieldList %}{% if field.isPrimaryKey!=1 %}"{{field.javaName}}",{% endif %}{% endfor %} };
 	    render(PoiRender.me(data).headers(headers).columns(columns).fileName("{{entity.name}}.xls"));
 	}
 }
