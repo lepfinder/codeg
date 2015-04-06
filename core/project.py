@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 import logging
 from constant import *
+from jinja2 import Environment, FileSystemLoader
 
 class Project():
 
@@ -15,6 +16,7 @@ class Project():
         self.packageName = packageName
         self.targetpath =  os.path.join(BASEPATH,"target",self.name)
         self.group = group
+        self.env = Environment(loader=FileSystemLoader("templates/%s" % group.templateName))
 
     def set_entitys(self,entitys):
         self.entitys = entitys

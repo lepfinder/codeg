@@ -2,6 +2,8 @@
   "groupdef": [
     {
       "name": "jfinal-web",
+      "templateName": "jfinalweb",
+      "staticFileName": "dwz",
       "taskdef": [
         {
           "name": "model",
@@ -147,6 +149,8 @@
     },
     {
       "name": "mybatis-base",
+      "templateName": "",
+      "staticFileName": "",
       "taskdef": [
         {
           "name": "ddl",

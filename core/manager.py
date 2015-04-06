@@ -25,7 +25,7 @@ class Manager():
         
         self.cleandirs()
         self.mkdirs()
-        self.copyViewFramework()
+        self.copyStaticFiles()
 
         self.project.run_group()
 
@@ -51,20 +51,21 @@ class Manager():
         #os.makedirs(targetpath + FS + "src" + FS + "main" + FS + "webapp")
         #os.makedirs(targetpath + FS + "src" + FS + "main" + FS + "webapp" + FS + "WEB-INF")
 
-    def copyViewFramework(self):
-        olddir = VIEWPATH
+    def copyStaticFiles(self):
+        olddir = self.project.group.staticFileName
         newdir = self.project.targetpath + FS + "src" + FS + "main" + FS + "webapp"
         shutil.copytree( olddir, newdir, False)
 
     def load_conf(self):
         conf = json.loads(open(CONF_PATH).read())
+        #print conf
 
         group_def = {}
         for group in conf['groupdef']:
             task_list = []
             for task in group['taskdef']:
                 task_list.append(Task(task['name'],task['type'],task['folder'],task['filename'],task['templatePath']))
-            group_def[group['name']] = Group(group['name'],task_list)
+            group_def[group['name']] = Group(group['name'],group['templateName'],group['staticFileName'],task_list)
 
         self.group_def = group_def
 
@@ -107,6 +108,6 @@ class Manager():
 
             entityList.append(entity)
 
-            print entity.to_dict()
+            #print entity.to_dict()
 
         self.project.set_entitys(entityList)

@@ -69,7 +69,7 @@ class TaskProcesser():
 class MultiTaskProcesser(TaskProcesser):
     def process(self,project,task):
         for entity in project.entitys:
-            template = env.get_template(task.templatePath)
+            template = project.env.get_template(task.templatePath)
             text = template.render({
                 "project":project.to_dict(),
                 "entity":entity.to_dict()
@@ -84,7 +84,7 @@ class MultiTaskProcesser(TaskProcesser):
 
 class SingleTaskProcesser(TaskProcesser):
     def process(self,project,task):
-        template = env.get_template(task.templatePath)
+        template = project.env.get_template(task.templatePath)
         text = template.render({
             "project":project.to_dict()
         })
