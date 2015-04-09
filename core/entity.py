@@ -5,9 +5,10 @@ import logging
 
 class Entity():
 
-    def __init__(self,name,label):
+    def __init__(self,name,label,tableName):
         self.name = name
         self.label = label
+        self.tableName = tableName
 
     def set_fields(self,fields):
         self.fields = fields
@@ -20,5 +21,6 @@ class Entity():
         return {
             "name":self.name,
             "label":self.label,
+            "tableName":self.tableName,
             "fieldList":fieldList
         }

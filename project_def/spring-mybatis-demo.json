@@ -1,8 +1,10 @@
 {
   "project": {
-    "name": "helloworld",
+    "name": "spring-mybatis-demo",
+    "port": "8888",
     "desc": "演示项目",
-    "packageName": "com.xiyang.demo"
+    "packageName": "com.xiyang.demo",
+    "group": "spring-mybatis"
   },
   "dbinfo": {
     "ip": "127.0.0.1",
@@ -14,20 +16,24 @@
   "entity": [
     {
       "name": "user",
+      "tableName":"user",
       "label": "用户",
       "fieldHead" :[
-        "label","fieldName","fieldType","javaName","javaType","isPrimaryKey","isSearchable"
+        "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
       ],
       "fields":[
         ["","id","int(9)","id","Integer",1,0],
-        ["用户姓名","name","varchar(20)","name","String",0,1]
+        ["用户姓名","name","varchar(20)","name","String",0,1],
+        ["手机号","mobile","varchar(20)","mobile","String",0,1],
+        ["邮箱","email","varchar(20)","email","String",0,1]
       ]
     },
     {
       "name": "category",
+      "tableName":"category",
       "label": "分类",
       "fieldHead" :[
-        "label","fieldName","fieldType","javaName","javaType","isPrimaryKey","isSearchable"
+        "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
       ],
       "fields":[
         ["","id","int(9)","id","Integer",1,0],

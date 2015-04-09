@@ -148,16 +148,30 @@
       ]
     },
     {
-      "name": "mybatis-base",
-      "templateName": "",
+      "name": "spring-mybatis",
+      "templateName": "spring-mybatis",
       "staticFileName": "",
       "taskdef": [
         {
-          "name": "ddl",
-          "type": "single",
-          "folder": "sql",
-          "filename": "{{project.name}}.sql",
-          "templatePath": "db/mysql/ddl.ftl"
+          "name": "model",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/domain",
+          "filename": "{{entity.name.lower() | capitalize}}.java",
+          "templatePath": "java/model.ftl"
+        },
+        {
+          "name": "dao",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/dao",
+          "filename": "{{entity.name.lower() | capitalize}}Dao.java",
+          "templatePath": "java/dao.ftl"
+        },
+        {
+          "name": "mapper",
+          "type": "multiple",
+          "folder": "src/main/resources/mapper",
+          "filename": "{{entity.name.lower()}}.xml",
+          "templatePath": "mappers/mapper.ftl"
         }
       ]
     }

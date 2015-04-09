@@ -52,10 +52,13 @@ class Manager():
         #os.makedirs(targetpath + FS + "src" + FS + "main" + FS + "webapp" + FS + "WEB-INF")
 
     def copyStaticFiles(self):
-        olddir = self.project.group.staticFileName
-        newdir = self.project.targetpath + FS + "src" + FS + "main" + FS + "webapp"
-        shutil.copytree( olddir, newdir, False)
-
+        print "====",self.project.group.staticFileName;
+        if self.project.group.staticFileName:
+            olddir = self.project.group.staticFileName
+            newdir = self.project.targetpath + FS + "src" + FS + "main" + FS + "webapp"
+            shutil.copytree( olddir, newdir, False)
+        else:
+            print "no static files."
     def load_conf(self):
         conf = json.loads(open(CONF_PATH).read())
         #print conf
@@ -90,7 +93,7 @@ class Manager():
         #加载项目实体定义
         entityList = []
         for edef in pdef['entity']:
-            entity = Entity(edef['name'],edef['label'])
+            entity = Entity(edef['name'],edef['label'],edef['tableName'])
 
             field_list = []
             for fdef in edef['fields']:
