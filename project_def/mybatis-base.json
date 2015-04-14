@@ -1,10 +1,10 @@
 {
   "project": {
-    "name": "spring-mybatis-demo",
+    "name": "mybatis-base-demo",
     "port": "8888",
     "desc": "演示项目",
     "packageName": "com.xiyang.demo",
-    "group": "spring-mybatis"
+    "group": "mybatis-base"
   },
   "dbinfo": {
     "ip": "127.0.0.1",

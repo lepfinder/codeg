@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 {% set entityName = entity.name | capitalize%}
+/**
+* {{entity.label}}
+*/
 public class {{entityName}} implements Serializable{
-
     {% for field in entity.fieldList %}
     /**
     * {{field.label}}
@@ -21,5 +23,4 @@ public class {{entityName}} implements Serializable{
         this.{{field.javaName}} = {{field.javaName}};
     }
     {% endfor %}
-    
 }
