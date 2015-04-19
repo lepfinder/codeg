@@ -1,21 +1,21 @@
 /*global Modules:true*/
 
 // define module
-var demoModule = Modules.register('demoModule', ['app']);
+var {{project.name}}Module = Modules.register('{{project.name}}Module', ['app']);
 
 // config routes
-demoModule.config(function($stateProvider, $urlRouterProvider) {
+{{project.name}}Module.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('demo', {
-      url: '/demo',
+    .state('{{project.name}}', {
+      url: '/{{project.name}}',
       "abstract": true,
       template: "<div ui-view></div>"
     })
-    .state('demo.user', {
-      url: '/user',
-      templateUrl: "modules/demo/templates/user.html",
-      controller: 'userController'
-    });
-
+    {% for entity in project.entityList %}
+    .state('{{project.name}}.{{entity.name}}', {
+      url: '/{{entity.name}}',
+      templateUrl: "modules/{{project.name}}/templates/{{entity.name}}.html",
+      controller: '{{entity.name}}Controller'
+    }){% endfor %};
 });

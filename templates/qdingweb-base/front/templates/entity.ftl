@@ -1,14 +1,16 @@
 <div class="page-header">
-  <h1>用户</h1>
+  <h1>{{entity.label}}</h1>
 </div>
 <div class="filter clearfix">
   <div class="row">
     <div class="col-sm-8">
       <form class="form-inline" ng-submit="query()">
+        {% for field in entity.fieldList %}{% if field.isSearchable==1 %}
         <div class="form-group mb10 mr10">
-          <label class="control-label text-normal">姓名：</label>
-          <input type="text" class="form-control" ng-model="key" />
-        </div>
+          <label class="control-label text-normal">{{field.label}}：</label>
+          <input type="text" class="form-control" ng-model="sParams.{{field.javaName}}" />
+        </div>{% endif %}
+        {% endfor %}
         <div class="mb10 mr10">
           <button type="submit" class="btn btn-primary ml10" ng-disabled="form.$invalid">
           <i class="fa fa-search"></i> 搜索
@@ -24,10 +26,8 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>名称</th>
-      <!-- <th>更新人</th> -->
-      <th>邮箱</th>
-      
+      {% for field in entity.fieldList %}{% if field.isPrimaryKey!=1 %}<th>{{field.label}}</th>{% endif %}
+      {% endfor %}
       <th class="text-right">操作</th>
     </tr>
   </thead>
@@ -43,9 +43,9 @@
       </td>
     </tr>
     <tr ng-repeat="item in list">
-      <td ng-bind="item.name"></td>
-      <td ng-bind="item.email"></td>
-      
+      {% for field in entity.fieldList %}{% if field.isPrimaryKey!=1 %}
+      <td ng-bind="item.{{field.javaName}}"></td>{% endif %}
+      {% endfor %}
       <td class="text-right">
         <a href="" ng-click="update(item)" ng-if="!item.updating">修改</a>
         <span class="loading-sm" ng-if="item.updating"></span>

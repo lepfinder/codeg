@@ -17,6 +17,7 @@
     {
       "name": "user",
       "label": "用户",
+      "tableName":"user",
       "fieldHead" :[
         "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
       ],
@@ -30,6 +31,7 @@
     {
       "name": "category",
       "label": "分类",
+      "tableName":"category",
       "fieldHead" :[
         "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
       ],

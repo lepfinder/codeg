@@ -1,21 +1,19 @@
-
-
-// basis.developer
-demoModule.controller('userController', function ($scope, $state, $modal, growl, userService, controllerGenerator) {
-  controllerGenerator($scope, userService, {
-    title: '用户',
+{% for entity in project.entityList %}
+{{project.name}}Module.controller('{{entity.name}}Controller', function ($scope, $state, $modal, growl, {{entity.name}}Service, controllerGenerator) {
+  controllerGenerator($scope, {{entity.name}}Service, {
+    title: '{{entity.label}}',
     property: 'name',
-    createTemplate: 'modules/demo/templates/partial/user-form.html',
-    updateTemplate: 'modules/demo/templates/partial/user-form.html',
+    createTemplate: 'modules/{{project.name}}/templates/partial/{{entity.name}}-form.html',
+    updateTemplate: 'modules/{{project.name}}/templates/partial/{{entity.name}}-form.html',
     autoload: true
   });
 
+  $sParams = {};
   // 定义搜索参数
   $scope.searchParams = function () {
-    return {
-      queryKey: $scope.key || null,
-      status: $scope.status || null
-    };
+    return $scope.sParams
   };
 
 });
+{% endfor %}
+

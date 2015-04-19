@@ -1,9 +1,11 @@
-demoModule.factory('userService', function (serviceGenerator, $http) {
+{% for entity in project.entityList %}
+{{project.name}}Module.factory('{{entity.name}}Service', function (serviceGenerator, $http) {
   return serviceGenerator().actions({
-    query: '/demo/admin/user/list',
-    create: '/demo/admin/user/save',
-    update: '/demo/admin/user/update',
-    remove: '/demo/admin/user/deleteById',
-    toggle: '/demo/admin/user/toggle'
+    query: '/{{project.name}}/admin/{{entity.name}}/list',
+    create: '/{{project.name}}/admin/{{entity.name}}/save',
+    update: '/{{project.name}}/admin/{{entity.name}}/update',
+    remove: '/{{project.name}}/admin/{{entity.name}}/deleteById',
+    toggle: '/{{project.name}}/admin/{{entity.name}}/toggle'
   });
 });
+{% endfor %}

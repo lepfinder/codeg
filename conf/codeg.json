@@ -321,6 +321,13 @@
           "templatePath": "config/base-service/sqlMapConfig.ftl"
         },
         {
+          "name": "service-log4j",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "log4j.xml",
+          "templatePath": "config/log4j.ftl"
+        },
+        {
           "name": "front-controllers",
           "type": "single",
           "folder": "front/{{project.name}}",
@@ -331,7 +338,7 @@
           "name": "front-css",
           "type": "single",
           "folder": "front/{{project.name}}",
-          "filename": "{{project.name}}.js",
+          "filename": "{{project.name}}.css",
           "templatePath": "front/css.ftl"
         },
         {
@@ -371,9 +378,9 @@
         },
         {
           "name": "front-entity-list",
-          "type": "single",
+          "type": "multiple",
           "folder": "front/{{project.name}}/templates/",
-          "filename": "{entity.name.lower()}}.html",
+          "filename": "{{entity.name.lower()}}.html",
           "templatePath": "front/templates/entity.ftl"
         },
         {
@@ -385,7 +392,7 @@
         },
         {
           "name": "index-jsp",
-          "type": "single",
+          "type": "multiple",
           "folder": "{{project.name}}-admin-web/src/main/webapp/pages",
           "filename": "index.jsp",
           "templatePath": "jsp/index.ftl"

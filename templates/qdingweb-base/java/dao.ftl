@@ -9,7 +9,7 @@ public interface I{{entityName}}Dao {
 
     public Long insert({{entityName}} {{entity.name}});
 
-    public Long insertSelective(User user);
+    public Long insertSelective({{entityName}} {{entity.name}});
 
     public void updateById({{entityName}} {{entity.name}});
     
