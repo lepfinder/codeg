@@ -8,14 +8,14 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>platform</name>
+	<name>{{project.folder_name}}</name>
 	<url>http://maven.apache.org</url>
 
 	<modules>
 		<module>{{project.name}}-admin-web</module>
 		<module>{{project.name}}-rpc-web</module>
 		<module>{{project.name}}-service</module>
-		<module>{{project.name}}-client</module>
+		<module>{{project.name}}-common</module>
 	</modules>
 
 	<properties>
@@ -108,13 +108,11 @@
 
 	<dependencyManagement>
 		<dependencies>
-
-			<dependency>
-				<groupId>{{project.packageName}}</groupId>
-				<artifactId>{{project.name}}-client</artifactId>
-				<version>1.0-SNAPSHOT</version>
-			</dependency>
-
+	        <dependency>
+	            <groupId>com.qding.framework</groupId>
+	            <artifactId>framework-common</artifactId>
+	            <version>0.0.5</version>
+	        </dependency>
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
@@ -396,8 +394,6 @@
 				<artifactId>quartz</artifactId>
 				<version>${quartz.version}</version>
 			</dependency>
-
-
 		</dependencies>
 	</dependencyManagement>
 
@@ -414,10 +410,5 @@
 			<url>http://mvn2.qdingnet.com/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-
-	<!-- <repositories> <repository> <id>internal</id> <name>Archiva Managed 
-		Internal Repository</name> <url>http://114.251.141.44:8091/archiva/repository/internal/</url> 
-		<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>false</enabled> 
-		</snapshots> </repository> </repositories> -->
 	
 </project>

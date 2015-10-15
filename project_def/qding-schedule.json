@@ -1,0 +1,18 @@
+{
+  "project": {
+    "folder_name": "qding-imessage",
+    "name": "imessage",
+    "port": "8888",
+    "desc": "千丁后台用户管理项目",
+    "packageName": "com.qding.imessage",
+    "group": "qdingweb"
+  },
+  "dbinfo": {
+    "host": "118.192.69.219",
+    "port": "3306",
+    "name": "qding_imessage",
+    "jdbcurl": "jdbc:mysql://localhost:3306/fund?useUnicode=true&characterEncoding=utf-8",
+    "username": "qding_pangu",
+    "password": "Qding-Pangu"
+  }
+}

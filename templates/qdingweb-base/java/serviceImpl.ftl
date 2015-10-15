@@ -1,5 +1,5 @@
 package {{project.packageName}}.service.impl;
-{% set entityName = entity.name | capitalize%}
+{% set entityName = entity.name[0].upper() + entity.name[1:]%}
 import com.qding.framework.common.basemodel.ResultPage;
 import {{project.packageName}}.SearchParams.{{entityName}}Params;
 import {{project.packageName}}.common.ModelResult;
@@ -32,50 +32,36 @@ public class {{entityName}}ServiceImpl implements I{{entityName}}Service {
         Integer totalCount = {{entity.name}}Dao.getPageCountByParam(param);
         //查询列表
         List<{{entityName}}> list = {{entity.name}}Dao.getPageListByParam(param);
-        resultPage = new ResultPage<{{entityName}}>(totalCount, (Integer) param.get("pageSize"), (Integer) param.get("startIndex"), list);
+        resultPage = new ResultPage<{{entityName}}>(totalCount, (Integer) param.get("pageSize"), (Integer) param.get("pageNo"), list);
         return resultPage;
     }
 
     @Override
-    public ModelResult save{{entityName}}({{entityName}} {{entity.name}}) {
-        ModelResult result = new ModelResult(ModelResult.CODE_200);
+    public {{entityName}} save{{entityName}}({{entityName}} {{entity.name}}) {
         {{entity.name}}Dao.insert({{entity.name}});
 
-        result.setMessage("保存成功");
-
-        return result;
+        return {{entity.name}};
     }
 
     @Override
-    public ModelResult update{{entityName}}({{entityName}} {{entity.name}}) {
-        ModelResult result = new ModelResult(ModelResult.CODE_200);
+    public {{entityName}} update{{entityName}}({{entityName}} {{entity.name}}) {
         {{entity.name}}Dao.updateByIdSelective({{entity.name}});
 
-        result.setMessage("更新成功");
-
-        return result;
+        return {{entity.name}};
     }
 
     @Override
-    public ModelResult getById(Long id) {
-        ModelResult result = new ModelResult(ModelResult.CODE_200);
-
+    public {{entityName}} getById(Long id) {
+        
         {{entityName}} {{entity.name}} = {{entity.name}}Dao.selectById(id);
-        result.setEntity({{entity.name}});
 
-        result.setMessage("查询成功");
-
-        return result;
+        return {{entity.name}};
     }
 
     @Override
-    public ModelResult deleteById(Long id) {
-        ModelResult result = new ModelResult(ModelResult.CODE_200);
-
+    public void deleteById(Long id) {
+       
         {{entity.name}}Dao.deleteById(id);
 
-        result.setMessage("删除成功");
-
-        return result;
     }
 }

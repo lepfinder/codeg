@@ -1,5 +1,5 @@
 package {{project.packageName}}.dao;
-{% set entityName = entity.name | capitalize%}
+{% set entityName = entity.name[0].upper() + entity.name[1:]%}
 import {{project.packageName}}.domain.{{entityName}};
 
 import java.util.HashMap;
@@ -9,11 +9,7 @@ public interface I{{entityName}}Dao {
 
     public Long insert({{entityName}} {{entity.name}});
 
-    public Long insertSelective({{entityName}} {{entity.name}});
-
-    public void updateById({{entityName}} {{entity.name}});
-    
-    public void updateByIdSelective({{entityName}} {{entity.name}});
+    public Long batchInsert(List<{{entityName}}> list);
 
     public {{entityName}} selectById(Long id);
 

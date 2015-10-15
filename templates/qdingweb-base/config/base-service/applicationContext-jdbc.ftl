@@ -15,7 +15,7 @@
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="${jdbc.url}?characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull" />
+         <property name="url" value="${jdbc.url}?useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true&amp;autoReconnect=true"/>
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
 
@@ -66,7 +66,7 @@
 
     {% for entity in project.entityList %}
     <bean id="{{entity.name}}Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="{{project.packageName}}.dao.I{{entity.name | capitalize }}Dao"/>
+        <property name="mapperInterface" value="{{project.packageName}}.dao.I{{entity.name[0].upper() + entity.name[1:] }}Dao"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
     {% endfor %}

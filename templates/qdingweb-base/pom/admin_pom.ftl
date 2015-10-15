@@ -110,23 +110,23 @@
     </build>
     <profiles>
         <profile>
-            <id>base-dev</id>
+            <id>{{project.name}}-dev</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <qding.log.leval>INFO</qding.log.leval>
-                <qding.log.path>D:/output/demo</qding.log.path>
-                <qding.conf.path>D:/platform/demo/</qding.conf.path>
+                <qding.log.path>D:/output/{{project.name}}</qding.log.path>
+                <qding.conf.path>D:/platform/{{project.name}}/</qding.conf.path>
             </properties>
         </profile>
 
         <profile>
-            <id>base-test</id>
+            <id>online</id>
             <properties>
                 <qding.log.leval>INFO</qding.log.leval>
-                <qding.log.path>/data/logs/demo</qding.log.path>
-                <qding.conf.path>/data/qdconf/demo/</qding.conf.path>
+                <qding.log.path>/data/logs/{{project.name}}</qding.log.path>
+                <qding.conf.path>/data/qdconf/{{project.name}}/</qding.conf.path>
             </properties>
         </profile>
     </profiles>

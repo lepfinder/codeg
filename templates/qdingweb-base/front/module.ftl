@@ -8,7 +8,7 @@ var {{project.name}}Module = Modules.register('{{project.name}}Module', ['app'])
 
   $stateProvider
     .state('{{project.name}}', {
-      url: '/{{project.name}}',
+      url: '/{{project.name}}bg',
       "abstract": true,
       template: "<div ui-view></div>"
     })

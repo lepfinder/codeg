@@ -8,7 +8,7 @@
     autoload: true
   });
 
-  $sParams = {};
+  $scope.sParams = {};
   // 定义搜索参数
   $scope.searchParams = function () {
     return $scope.sParams

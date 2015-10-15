@@ -1,5 +1,5 @@
 package {{project.packageName}}.service;
-{% set entityName = entity.name | capitalize%}
+{% set entityName = entity.name[0].upper() + entity.name[1:]%}
 import com.qding.framework.common.basemodel.ResultPage;
 import {{project.packageName}}.SearchParams.{{entityName}}Params;
 import {{project.packageName}}.common.ModelResult;
@@ -22,26 +22,26 @@ public interface I{{entityName}}Service {
      * @param {{entity.name}}
      * @return
      */
-    ModelResult save{{entityName}}({{entityName}} {{entity.name}});
+    {{entityName}} save{{entityName}}({{entityName}} {{entity.name}});
 
     /**
      * 更新{{entity.name}}
      * @param user {{entity.label}}
      * @return
      */
-    ModelResult update{{entityName}}({{entityName}} {{entity.name}});
+    {{entityName}} update{{entityName}}({{entityName}} {{entity.name}});
 
     /**
      * 根据ID获取{{entity.name}}
      * @param id
      * @return
      */
-    ModelResult getById(Long id);
+    {{entityName}} getById(Long id);
 
     /**
      * 删除{{entity.name}}
      * @param id
      * @return
      */
-    ModelResult deleteById(Long id);
+    void deleteById(Long id);
 }

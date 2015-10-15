@@ -23,5 +23,5 @@
     </bean>
 
 
-    <import resource="spring-remote-client.xml"></import>
+    <import resource="spring-remote-common.xml"></import>
 </beans>

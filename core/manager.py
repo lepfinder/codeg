@@ -3,6 +3,8 @@
 import json
 import logging
 import shutil
+from sqlalchemy import *
+from sqlalchemy.engine import reflection
 from project import Project
 from group import Group
 from entity import Entity
@@ -10,6 +12,7 @@ from field import Field
 from task import Task
 from constant import *
 from jinja2 import Environment, FileSystemLoader
+
 
 
 class Manager():
@@ -32,7 +35,7 @@ class Manager():
     def create2(self):
         logging.info("start create project:" + self.project.name)
 
-        self.project.run_group()
+        #self.project.run_group()
 
     def cleandirs(self):
         if os.path.exists(self.project.targetpath):
@@ -80,9 +83,12 @@ class Manager():
         #print pdef
         #加载项目定义信息
         self.project = Project(
+            pdef['project']['folder_name'],
             pdef['project']['name'],
-            pdef['project']['port'],
             pdef['project']['desc'],
+            pdef['dbinfo']['host'],
+            pdef['dbinfo']['port'],
+            pdef['dbinfo']['name'],
             pdef['dbinfo']['jdbcurl'],
             pdef['dbinfo']['username'],
             pdef['dbinfo']['password'],
@@ -90,23 +96,22 @@ class Manager():
             self.group_def[pdef['project']['group']]
         )
 
+        engine = create_engine('mysql://%s:%s@%s:%s/%s' % (self.project.db_username,self.project.db_password,self.project.db_host,self.project.db_port,self.project.db_name))
+        insp = reflection.Inspector.from_engine(engine)
+        print insp.get_table_names()
+
         #加载项目实体定义
         entityList = []
-        for edef in pdef['entity']:
-            entity = Entity(edef['name'],edef['label'],edef['tableName'])
+        for table_name in insp.get_table_names():
+            logging.info("reflection table:"+table_name)
+            entity = Entity(table_name,table_name,table_name)
 
             field_list = []
-            for fdef in edef['fields']:
+            for c in insp.get_columns(table_name):
                 field_list.append(Field(
-                    fdef[0],
-                    fdef[1],
-                    fdef[2],
-                    fdef[3],
-                    fdef[4],
-                    fdef[5],
-                    fdef[6]
+                    c['name'],
+                    c['type']
                 ))
-
             entity.set_fields(field_list)
 
             entityList.append(entity)
@@ -114,3 +119,5 @@ class Manager():
             #print entity.to_dict()
 
         self.project.set_entitys(entityList)
+
+    

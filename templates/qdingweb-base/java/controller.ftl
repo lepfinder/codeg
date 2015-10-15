@@ -1,5 +1,5 @@
 package {{project.packageName}}.controller;
-{% set entityName = entity.name | capitalize%}
+{% set entityName = entity.name[0].upper() + entity.name[1:]%}
 import com.qding.framework.common.basemodel.ResultPage;
 import {{project.packageName}}.SearchParams.{{entityName}}Params;
 import {{project.packageName}}.common.ModelResult;
@@ -51,9 +51,14 @@ public class {{entityName}}Controller extends MultiActionController {
     public Object save({{entityName}} {{entity.name}}) {
         logger.info("save {{entity.name}}.");
 
-        ModelResult result = {{entity.name}}Service.save{{entityName}}({{entity.name}});
+        ModelResult modelResult = new ModelResult(ModelResult.CODE_200);
+        
+        {{entityName}} entity = {{entity.name}}Service.save{{entityName}}({{entity.name}});
 
-        return result;
+        modelResult.setMessage("操作成功");
+        modelResult.setEntity(entity);
+
+        return modelResult;
     }
 
     /**
@@ -64,9 +69,14 @@ public class {{entityName}}Controller extends MultiActionController {
     public Object update({{entityName}} {{entity.name}}) {
         logger.info("update {{entity.name}}.");
 
-        ModelResult result = {{entity.name}}Service.update{{entityName}}({{entity.name}});
+        ModelResult modelResult = new ModelResult(ModelResult.CODE_200);
 
-        return result;
+        {{entityName}} result = {{entity.name}}Service.update{{entityName}}({{entity.name}});
+
+        modelResult.setMessage("操作成功");
+        modelResult.setEntity({{entity.name}});
+
+        return modelResult;
     }
 
     /**
@@ -77,23 +87,31 @@ public class {{entityName}}Controller extends MultiActionController {
     public Object getById(Long id) {
         logger.info("get {{entity.name}} by id.");
 
-        ModelResult result = {{entity.name}}Service.getById(id);
+        ModelResult modelResult = new ModelResult(ModelResult.CODE_200);
+        
+        {{entityName}} {{entity.name}} = {{entity.name}}Service.getById(id);
 
-        return result;
+        modelResult.setMessage("查询成功");
+        modelResult.setEntity({{entity.name}});
+
+        return modelResult;
     }
 
 
     /**
-     * 新增{{entity.label}}
+     * 删除{{entity.label}}
      */
     @RequestMapping(value = "deleteById",method= RequestMethod.POST)
     @ResponseBody
     public Object deleteById(Long id) {
         logger.info("save {{entity.name}}.");
+        ModelResult modelResult = new ModelResult(ModelResult.CODE_200);
+        
+        {{entity.name}}Service.deleteById(id);
 
-        ModelResult result = {{entity.name}}Service.deleteById(id);
-
-        return result;
+        modelResult.setMessage("操作成功");
+        
+        return modelResult;
     }
 
 }

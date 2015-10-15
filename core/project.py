@@ -6,15 +6,18 @@ from jinja2 import Environment, FileSystemLoader
 
 class Project():
 
-    def __init__(self,name,port,desc,jdbcurl,username,password,packageName,group):
+    def __init__(self,folder_name,name,desc,db_host,db_port,db_name,db_jdbcurl,db_username,db_password,packageName,group):
+        self.folder_name = folder_name
         self.name = name
-        self.port = port
         self.desc = desc
-        self.jdbcurl = jdbcurl
-        self.username = username
-        self.password = password
+        self.db_host = db_host
+        self.db_port = db_port
+        self.db_name = db_name
+        self.db_jdbcurl = db_jdbcurl
+        self.db_username = db_username
+        self.db_password = db_password
         self.packageName = packageName
-        self.targetpath =  os.path.join(BASEPATH,"target",self.name)
+        self.targetpath =  os.path.join(BASEPATH,"target",self.folder_name)
         self.group = group
         self.env = Environment(loader=FileSystemLoader("templates/%s" % group.templateName))
 
@@ -31,12 +34,14 @@ class Project():
             entityList.append(entity.to_dict())
 
         return {
+            "folder_name":self.folder_name,
             "name":self.name,
-            "port":self.port,
+            "port":self.db_port,
             "desc":self.desc,
-            "jdbcurl":self.jdbcurl,
-            "username":self.username,
-            "password":self.password,
+            "db_name":self.db_name,
+            "jdbcurl":self.db_jdbcurl,
+            "username":self.db_username,
+            "password":self.db_password,
             "packageName":self.packageName,
             "entityList":entityList
         }
