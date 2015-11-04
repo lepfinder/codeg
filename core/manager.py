@@ -14,7 +14,6 @@ from constant import *
 from jinja2 import Environment, FileSystemLoader
 
 
-
 class Manager():
 
     def __init__(self,pdef_name):
@@ -92,6 +91,7 @@ class Manager():
             pdef['dbinfo']['jdbcurl'],
             pdef['dbinfo']['username'],
             pdef['dbinfo']['password'],
+            pdef['dbinfo']['tables'],
             pdef['project']['packageName'],
             self.group_def[pdef['project']['group']]
         )
@@ -103,6 +103,9 @@ class Manager():
         #加载项目实体定义
         entityList = []
         for table_name in insp.get_table_names():
+            if table_name not in self.project.db_tables:
+                continue
+
             logging.info("reflection table:"+table_name)
             entity = Entity(table_name,table_name,table_name)
 

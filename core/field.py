@@ -28,6 +28,10 @@ class Field():
             return "Long"
         if self.dbType.startswith('INTEGER'):
             return "Integer"
+        if self.dbType.startswith('FLOAT'):
+            return "Float"
+        if self.dbType.startswith('DOUBLE'):
+            return "Double"
         if self.dbType.startswith('DATE'):
             return "Date"
         if self.dbType.startswith('TINYINT'):

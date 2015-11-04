@@ -42,35 +42,7 @@ codeg所有的配置都是json格式。
     "jdbcurl": "jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf-8",
     "username": "root",
     "password": "123456"
-  },
-  "entity": [
-    {
-      "name": "user",
-      "label": "用户",
-      "tableName":"user",
-      "fieldHead" :[
-        "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
-      ],
-      "fields":[
-        ["","id","int(9)","id","Integer",1,0],
-        ["用户姓名","name","varchar(20)","name","String",0,1],
-        ["手机号","mobile","varchar(20)","mobile","String",0,1],
-        ["邮箱","email","varchar(20)","email","String",0,1]
-      ]
-    },
-    {
-      "name": "category",
-      "label": "分类",
-      "tableName":"category",
-      "fieldHead" :[
-        "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
-      ],
-      "fields":[
-        ["","id","int(9)","id","Integer",1,0],
-        ["分类名称","name","varchar(20)","name","String",0,1]
-      ]
-    }
-  ]
+  }
 }
 
 ```

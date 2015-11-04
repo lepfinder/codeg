@@ -6,7 +6,7 @@ from jinja2 import Environment, FileSystemLoader
 
 class Project():
 
-    def __init__(self,folder_name,name,desc,db_host,db_port,db_name,db_jdbcurl,db_username,db_password,packageName,group):
+    def __init__(self,folder_name,name,desc,db_host,db_port,db_name,db_jdbcurl,db_username,db_password,db_tables,packageName,group):
         self.folder_name = folder_name
         self.name = name
         self.desc = desc
@@ -16,6 +16,7 @@ class Project():
         self.db_jdbcurl = db_jdbcurl
         self.db_username = db_username
         self.db_password = db_password
+        self.db_tables = db_tables
         self.packageName = packageName
         self.targetpath =  os.path.join(BASEPATH,"target",self.folder_name)
         self.group = group
