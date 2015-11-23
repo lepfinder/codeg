@@ -3,6 +3,7 @@
 import json
 import logging
 import shutil
+import MySQLdb
 from sqlalchemy import *
 from sqlalchemy.engine import reflection
 from project import Project
@@ -12,6 +13,10 @@ from field import Field
 from task import Task
 from constant import *
 from jinja2 import Environment, FileSystemLoader
+import sys  
+
+reload(sys)  
+sys.setdefaultencoding('utf8')
 
 
 class Manager():
@@ -98,7 +103,34 @@ class Manager():
 
         engine = create_engine('mysql://%s:%s@%s:%s/%s' % (self.project.db_username,self.project.db_password,self.project.db_host,self.project.db_port,self.project.db_name))
         insp = reflection.Inspector.from_engine(engine)
-        print insp.get_table_names()
+        #print insp.get_table_names()
+
+        self.dbconn= MySQLdb.connect(
+            host=self.project.db_host,
+            port = int(self.project.db_port),
+            user=self.project.db_username,
+            passwd=self.project.db_password,
+            connect_timeout=6000
+        )
+        self.cur = self.dbconn.cursor() 
+
+        self.field_dict = {}
+        try:
+            sql = """
+            select TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,COLUMN_COMMENT 
+            from information_schema.`COLUMNS`  where 
+            TABLE_SCHEMA = '%s'
+            """
+            results = self.cur.fetchmany(self.cur.execute(sql % self.project.db_name))
+
+            for r in results:
+                #print r[3].encode('utf-8')
+                self.field_dict[(r[1],r[2])] = r[3].encode('utf-8')
+        except Exception, e:
+            print e
+            print sql
+        self.cur.close()
+        self.dbconn.close()
 
         #加载项目实体定义
         entityList = []
@@ -111,9 +143,15 @@ class Manager():
 
             field_list = []
             for c in insp.get_columns(table_name):
+                # 获取注释
+                lable = ""
+                if self.field_dict.has_key((table_name,c['name'])):
+                    lable = self.field_dict[(table_name,c['name'])]
+
                 field_list.append(Field(
                     c['name'],
-                    c['type']
+                    c['type'],
+                    lable
                 ))
             entity.set_fields(field_list)
 

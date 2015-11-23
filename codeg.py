@@ -7,3 +7,5 @@ manager = Manager("qding-dcenter.json")
 #manager = Manager("jfinalweb-demo.json")
 
 manager.create()
+
+

@@ -5,8 +5,8 @@ import logging
 
 class Field():
 
-    def __init__(self,dbName,dbType):
-        self.label = ""
+    def __init__(self,dbName,dbType,label):
+        self.label = label
         self.dbName = dbName
         self.dbType = str(dbType)
         self.javaName = self.get_java_name()

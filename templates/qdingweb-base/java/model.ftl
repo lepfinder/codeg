@@ -9,6 +9,10 @@ import java.util.*;
 * {{entity.label}}
 */
 public class {{entityName}} implements Serializable{
+    
+    public {{entityName}}() {
+    }
+
     {% for field in entity.fieldList %}
     /**
     * {{field.label}}
