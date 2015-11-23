@@ -1,44 +1,21 @@
 {
   "project": {
-    "name": "demo",
+    "folder_name": "qding-brick",
+    "name": "hotcycle",
     "port": "8888",
-    "desc": "演示项目",
-    "packageName": "com.xiyang.demo",
+    "desc": "基础数据",
+    "packageName": "com.qding.brick",
     "group": "jfinal-web"
   },
   "dbinfo": {
-    "ip": "127.0.0.1",
-    "port": "3306",
-    "jdbcurl": "jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf-8",
-    "username": "root",
-    "password": "123456"
-  },
-  "entity": [
-    {
-      "name": "user",
-      "label": "用户",
-      "tableName":"user",
-      "fieldHead" :[
-        "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
-      ],
-      "fields":[
-        ["","id","int(9)","id","Integer",1,0],
-        ["用户姓名","name","varchar(20)","name","String",0,1],
-        ["手机号","mobile","varchar(20)","mobile","String",0,1],
-        ["邮箱","email","varchar(20)","email","String",0,1]
-      ]
-    },
-    {
-      "name": "category",
-      "label": "分类",
-      "tableName":"category",
-      "fieldHead" :[
-        "label","dbName","dbType","javaName","javaType","isPrimaryKey","isSearchable"
-      ],
-      "fields":[
-        ["","id","int(9)","id","Integer",1,0],
-        ["分类名称","name","varchar(20)","name","String",0,1]
-      ]
-    }
-  ]
+    "host": "10.37.253.31",
+    "port": "3307",
+    "name": "qding_brick",
+    "jdbcurl": "",
+    "username": "dev",
+    "password": "",
+    "tables" : [
+      "keyword_conf"
+    ]
+  }
 }
