@@ -35,7 +35,7 @@ git clone git@github.com:lepfinder/codeg.git
     "port": "3307",
     "name": "qding_brick",
     "username": "dev",
-    "password": "458kT*!W",
+    "password": "",
     "tables" : [
       "keyword_conf"
     ]
@@ -79,7 +79,7 @@ codeg所有的配置都是json格式。
     "port": "3307",
     "name": "qding_brick",
     "username": "dev",
-    "password": "458kT*!W",
+    "password": "",
     "tables" : [
       "keyword_conf"
     ]
