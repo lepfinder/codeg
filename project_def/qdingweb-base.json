@@ -11,9 +11,8 @@
     "host": "10.37.253.31",
     "port": "3307",
     "name": "qding_brick",
-    "jdbcurl": "",
     "username": "dev",
-    "password": "",
+    "password": "458kT*!W",
     "tables" : [
       "keyword_conf"
     ]

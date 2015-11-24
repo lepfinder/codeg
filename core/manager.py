@@ -84,6 +84,12 @@ class Manager():
         logging.info("pdef_path:"+self.pdef_path);
         pdef = json.loads(open(self.pdef_path).read())
 
+        tables = []
+        try:
+            tables = pdef['dbinfo']['tables']
+        except:
+            pass
+
         #print pdef
         #加载项目定义信息
         self.project = Project(
@@ -93,10 +99,9 @@ class Manager():
             pdef['dbinfo']['host'],
             pdef['dbinfo']['port'],
             pdef['dbinfo']['name'],
-            pdef['dbinfo']['jdbcurl'],
             pdef['dbinfo']['username'],
             pdef['dbinfo']['password'],
-            pdef['dbinfo']['tables'],
+            tables,
             pdef['project']['packageName'],
             self.group_def[pdef['project']['group']]
         )
@@ -135,7 +140,7 @@ class Manager():
         #加载项目实体定义
         entityList = []
         for table_name in insp.get_table_names():
-            if table_name not in self.project.db_tables:
+            if self.project.db_tables and table_name not in self.project.db_tables:
                 continue
 
             logging.info("reflection table:"+table_name)

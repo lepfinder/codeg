@@ -4,50 +4,91 @@
 
 codeg是一个轻量级的代码生成器内核（代码仅300行左右），基于Python和jinja2开发，你可以定制自己的项目模板，快速生成可以直接运行的工程项目。
 
+## 功能特点
+1. 根据数据库连接配置可以支持直接生成java工程
+2. 支持生成指定表的工程代码
+3. 支持读取数据库表注释，自动完成java类注释
+4. 微框架设计，方便自己修改模板完成自己的重复性代码工作
+
+![](http://7xo9p3.com1.z0.glb.clouddn.com/markdown/1448276888720.png?imageMogr2/thumbnail/!50p/quality/100!)
+
+
 ## 快速上手
 
-下载源码
+1. 下载源码
 ```
-https://github.com/lepfinder/codeg
+git clone git@github.com:lepfinder/codeg.git
 ```
-执行根目录的codeg.py可以生成demo工程，在target目录中可以查看生成好的代码。
+2. 修改project_def目录下的qdingweb-base.json配置文件
+```
+{
+  "project": {
+    "folder_name": "qding-brick",
+    "name": "hotcycle",
+    "port": "8888",
+    "desc": "基础数据",
+    "packageName": "com.qding.brick",
+    "group": "qdingweb"
+  },
+  "dbinfo": {
+    "host": "10.37.253.31",
+    "port": "3307",
+    "name": "qding_brick",
+    "username": "dev",
+    "password": "458kT*!W",
+    "tables" : [
+      "keyword_conf"
+    ]
+  }
+}
+```
+
+3. 执行根目录的codeg.py可以生成demo工程，在target目录中可以查看生成好的代码。
+```
+. venv/bin/activate
+python manager.py
+```
+
+manager.py中可以指定使用的项目配置文件
 ```
 #! /usr/bin/env python
 # -*- coding: UTF-8 -*-
 from core import Manager
 
-manager = Manager("jfinalweb-demo.json")
+manager = Manager("qdingweb-base.json")
 
 manager.create()
 ```
-生成器会生成项目的sql文件，手工执行可以完成数据库的创建。
 
-
-## 创建项目
+## 项目配置
 codeg所有的配置都是json格式。
 
 每一个项目都是一个单独的配置文件，一个例子如下所示：
 ```
 {
   "project": {
-    "name": "demo",
+    "folder_name": "qding-brick",
+    "name": "hotcycle",
     "port": "8888",
-    "desc": "演示项目",
-    "packageName": "com.xiyang.demo",
-    "group": "jfinal-web"
+    "desc": "基础数据",
+    "packageName": "com.qding.brick",
+    "group": "qdingweb"
   },
   "dbinfo": {
-    "ip": "127.0.0.1",
-    "port": "3306",
-    "jdbcurl": "jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf-8",
-    "username": "root",
-    "password": "123456"
+    "host": "10.37.253.31",
+    "port": "3307",
+    "name": "qding_brick",
+    "username": "dev",
+    "password": "458kT*!W",
+    "tables" : [
+      "keyword_conf"
+    ]
   }
 }
-
 ```
 
 目前生成器支持如下三种项目的生成：
+
 - jfinalweb
 	- 基于jfinal的一个web项目
 - mybatis-base
@@ -61,6 +102,7 @@ codeg所有的配置都是json格式。
 ## 设计思路
 
 生成器包含如下的几个基本模块：
+
 - Project
 - Group
 - Entity
