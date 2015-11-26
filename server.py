@@ -43,7 +43,7 @@ def gen():
 	try:
 		db = DButils()
 		sql = "insert into codeg.gen_log(pdef_content,filename,uuid) values (%s,%s,%s)"
-		db.execute(sql,(content,manager.project.folder_name,manager.project.uuid_name))
+		db.execute(sql,(content.encode("utf-8"),manager.project.folder_name,manager.project.uuid_name))
 	finally:
 		db.close_db()
 
