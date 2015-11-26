@@ -2,7 +2,6 @@
   "project": {
     "folder_name": "qding-brick",
     "name": "hotcycle",
-    "port": "8888",
     "desc": "基础数据",
     "packageName": "com.qding.brick",
     "group": "qdingweb"

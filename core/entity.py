@@ -17,7 +17,7 @@ class Entity():
         self.javaName = ''
         for s in tableName.split("_"):
             self.javaName = self.javaName + s[0].upper()+s[1:]
-        print self.javaName[0].lower()+self.javaName[1:]
+        #print self.javaName[0].lower()+self.javaName[1:]
         return self.javaName[0].lower()+self.javaName[1:]
 
     

@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: UTF-8 -*-
 import logging
+import uuid
 from constant import *
 from jinja2 import Environment, FileSystemLoader
 
@@ -17,7 +18,10 @@ class Project():
         self.db_password = db_password
         self.db_tables = db_tables
         self.packageName = packageName
-        self.targetpath =  os.path.join(BASEPATH,"target",self.folder_name)
+        self.uuid_name = str(uuid.uuid1())
+        self.targetfolder =  os.path.join(BASEPATH,"target",self.uuid_name)
+
+        self.targetpath =  os.path.join(self.targetfolder,self.folder_name)
         self.group = group
         self.env = Environment(loader=FileSystemLoader("templates/%s" % group.templateName))
 

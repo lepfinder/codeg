@@ -21,13 +21,33 @@ sys.setdefaultencoding('utf8')
 
 class Manager():
 
-    def __init__(self,pdef_name):
-        self.pdef_path = os.path.join(PROJECT_DEF_PATH,pdef_name)
-        
+    def __init__(self):
         self.load_conf()
-        self.load_pdef()
+
+    def set_pdef_name(self,pdef_name):
+        self.pdef_path = os.path.join(PROJECT_DEF_PATH,pdef_name)
+
+        content = open(self.pdef_path).read()
+        self.pdef_content = content
+
+        pdef = json.loads(content)
+
+        self.load_pdef(pdef)
+
+    def set_pdef(self,pdef):
+
+        self.load_pdef(pdef)
 
     def create(self):
+        logging.info("start create project:" + self.project.name)
+        
+        self.cleandirs()
+        self.mkdirs()
+        self.copyStaticFiles()
+
+        self.project.run_group()
+
+    def create_zip(self):
         logging.info("start create project:" + self.project.name)
         
         self.cleandirs()
@@ -80,9 +100,7 @@ class Manager():
         self.group_def = group_def
 
     #加载项目的定义信息
-    def load_pdef(self):
-        logging.info("pdef_path:"+self.pdef_path);
-        pdef = json.loads(open(self.pdef_path).read())
+    def load_pdef(self,pdef):
 
         tables = []
         try:
