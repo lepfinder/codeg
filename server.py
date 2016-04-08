@@ -27,10 +27,11 @@ def gen():
 	
 	pdef = json.loads(content)
 	pdef['project']['group'] = 'qdingweb'
-	pdef['dbinfo']['host'] = db_host
-	pdef['dbinfo']['port'] = db_port
-	pdef['dbinfo']['username'] = db_user
-	pdef['dbinfo']['password'] = db_passwd
+
+	#pdef['dbinfo']['host'] = db_host
+	#pdef['dbinfo']['port'] = db_port
+	#pdef['dbinfo']['username'] = db_user
+	#pdef['dbinfo']['password'] = db_passwd
 
 
 	manager = Manager()
@@ -91,4 +92,4 @@ def downloader(id):
 	return send_from_directory(dirname,filename,as_attachment=True)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0',port=5001)

@@ -13,7 +13,8 @@ class Field():
         self.javaType = self.get_java_type()
         self.isPrimaryKey = 0
         self.isSearchable = 0
-    
+        print self.dbType,'--->',self.javaType
+
     def get_java_name(self):
         self.javaName = ''
         for s in self.dbName.split("_"):
@@ -22,6 +23,7 @@ class Field():
         return self.javaName[0].lower()+self.javaName[1:]
 
     def get_java_type(self):
+
         if self.dbType.startswith('VARCHAR'):
             return "String"
         if self.dbType.startswith('BIGINT'):
@@ -36,6 +38,14 @@ class Field():
             return "Date"
         if self.dbType.startswith('TINYINT'):
             return "Date"
+        if self.dbType.startswith('TIMESTAMP'):
+            return "Date"
+        if self.dbType.startswith('DECIMAL'):
+            return "Double"
+        if self.dbType.startswith('LONGTEXT'):
+            return "String"
+        if self.dbType.startswith('TEXT'):
+            return "String"
 
     def to_dict(self):
         return self.__dict__

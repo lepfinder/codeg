@@ -7,86 +7,89 @@ from jinja2 import Template
 
 logging.basicConfig(level=logging.INFO)
 
-class Task():
 
-    def __init__(self,name,taskType,folder,filename,templatePath):
+class Task():
+    def __init__(self, name, taskType, folder, filename, templatePath):
         self.name = name
         self.type = taskType
         self.folder = folder
         self.filename = filename
         self.templatePath = templatePath
 
-    def run(self,project):
+    def run(self, project):
         logging.info("task " + self.name + " run");
-        
+
         if "single" == self.type:
-            SingleTaskProcesser().process(project,self)
+            SingleTaskProcesser().process(project, self)
         elif "multiple" == self.type:
-            MultiTaskProcesser().process(project,self)
+            MultiTaskProcesser().process(project, self)
+        elif "make-mvn-module" == self.type:
+            MakeMvnModuleTaskProcesser().process(project, self)
 
         logging.info("task " + self.name + " end");
 
-    def parse_template(self,project,entity):
+    def parse_template(self, project, entity):
         folderTemplate = Template(self.folder)
         folder = folderTemplate.render({
-            "project":project.to_dict(),
-            "entity":entity.to_dict()
+            "project": project.to_dict(),
+            "entity": entity.to_dict()
         })
 
-        folder = os.path.join(project.targetpath,folder)
+        folder = os.path.join(project.targetpath, folder)
 
         filenameTemplate = Template(self.filename)
         filename = filenameTemplate.render({
-            "project":project.to_dict(),
-            "entity":entity.to_dict()
+            "project": project.to_dict(),
+            "entity": entity.to_dict()
         })
 
         self.target_folder = folder
-        self.target_filepath = os.path.join(folder,filename)
+        self.target_filepath = os.path.join(folder, filename)
 
-    def parse_template_single(self,project):
+    def parse_template_single(self, project):
         folderTemplate = Template(self.folder)
         folder = folderTemplate.render({
-            "project":project.to_dict()
+            "project": project.to_dict()
         })
 
-        folder = os.path.join(project.targetpath,folder)
+        folder = os.path.join(project.targetpath, folder)
 
         filenameTemplate = Template(self.filename)
         filename = filenameTemplate.render({
-            "project":project.to_dict()
+            "project": project.to_dict()
         })
 
         self.target_folder = folder
-        self.target_filepath = os.path.join(folder,filename)
+        self.target_filepath = os.path.join(folder, filename)
 
 
 class TaskProcesser():
-
-    def process(self,project,task):
+    def process(self, project, task):
         pass
 
+
 class MultiTaskProcesser(TaskProcesser):
-    def process(self,project,task):
+    def process(self, project, task):
         for entity in project.entitys:
             template = project.env.get_template(task.templatePath)
             text = template.render({
-                "project":project.to_dict(),
-                "entity":entity.to_dict()
+                "project": project.to_dict(),
+                "entity": entity.to_dict()
             })
 
-            task.parse_template(project,entity)
+            task.parse_template(project, entity)
 
             if not os.path.exists(task.target_folder):
                 os.makedirs(task.target_folder)
 
-            f = open(task.target_filepath,"wb").write(text.encode("utf-8"))
+            f = open(task.target_filepath, "wb").write(text.encode("utf-8"))
+
 
 class SingleTaskProcesser(TaskProcesser):
-    def process(self,project,task):
+    def process(self, project, task):
         template = project.env.get_template(task.templatePath)
         text = template.render({
-            "project":project.to_dict()
+            "project": project.to_dict()
         })
 
         task.parse_template_single(project)
@@ -94,5 +97,20 @@ class SingleTaskProcesser(TaskProcesser):
         if not os.path.exists(task.target_folder):
             os.makedirs(task.target_folder)
 
-        f = open(task.target_filepath,"wb").write(text.encode("utf-8"))
-    
+        f = open(task.target_filepath, "wb").write(text.encode("utf-8"))
+
+
+
+class MakeMvnModuleTaskProcesser(TaskProcesser):
+    def process(self, project, task):
+
+        targetpath = os.path.join(project.targetpath, project.name+"-"+task.folder)
+        print "MakeMvnModuleTaskProcesser,targetpath=", targetpath
+
+        os.makedirs(targetpath + FS + "src")
+        os.makedirs(targetpath + FS + "src" + FS + "main")
+        os.makedirs(targetpath + FS + "src" + FS + "test")
+        os.makedirs(targetpath + FS + "src" + FS + "test" + FS + "java")
+        os.makedirs(targetpath + FS + "src" + FS + "test" + FS + "resources")
+        os.makedirs(targetpath + FS + "src" + FS + "main" + FS + "java")
+        os.makedirs(targetpath + FS + "src" + FS + "main" + FS + "resources")

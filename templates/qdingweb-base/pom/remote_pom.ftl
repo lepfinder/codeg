@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>{{project.name}}-rpc-web</artifactId>
+    <artifactId>{{project.name}}-remote</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     

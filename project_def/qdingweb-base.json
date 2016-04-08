@@ -1,19 +1,19 @@
 {
   "project": {
-    "folder_name": "qding-brick",
-    "name": "hotcycle",
-    "desc": "基础数据",
-    "packageName": "com.qding.brick",
-    "group": "qdingweb"
+    "folder_name": "qding-order",
+    "name": "order",
+    "desc": "订单平台",
+    "packageName": "com.qding.order",
+    "group": "qdingweb-pro"
   },
   "dbinfo": {
     "host": "10.37.253.31",
     "port": "3307",
-    "name": "qding_brick",
+    "name": "qding_platform",
     "username": "dev",
     "password": "458kT*!W",
     "tables" : [
-      "keyword_conf"
+      "order_base"
     ]
   }
 }

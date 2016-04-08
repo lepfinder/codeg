@@ -15,6 +15,15 @@ codeg是一个轻量级的代码生成器内核（代码仅300行左右），基
 - python 2.7.3 +
 - easy_install virtualenv
 
+如果安装时出现如下错误：EnvironmentError: mysql_config not found
+```
+sudo apt-get install libmysqld-dev
+```
+error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+```
+sudo apt-get install python2.7-dev
+```
+
 ## 快速上手
 
 1. 安装
@@ -176,3 +185,5 @@ codeg提供了足够的扩展能力支持各种代码生成。
 - 自动生成接口文档
 - 自动生成接口测试程序
 - 完成一个CS/BS的客户端程序，来完成项目的配置和实体的定义[已完成bs客户端]
+
+

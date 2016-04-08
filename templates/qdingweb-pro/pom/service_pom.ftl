@@ -68,7 +68,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.baidu.disconf</groupId>
             <artifactId>disconf-client</artifactId>
@@ -84,13 +83,21 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+        <!--全局调度服务-->
+        <dependency>
+            <groupId>com.qdingnet</groupId>
+            <artifactId>schedule-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
-
+        <dependency>
+            <groupId>com.qdingnet</groupId>
+            <artifactId>imessage-client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

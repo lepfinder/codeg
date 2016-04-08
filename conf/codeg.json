@@ -279,11 +279,11 @@
           "templatePath": "pom/service_pom.ftl"
         },
         {
-          "name": "rpc-pom",
+          "name": "remote-pom",
           "type": "single",
-          "folder": "{{project.name}}-rpc-web",
+          "folder": "{{project.name}}-remote",
           "filename": "pom.xml",
-          "templatePath": "pom/rpc_pom.ftl"
+          "templatePath": "pom/remote_pom.ftl"
         },
         {
           "name": "admin-applicationContext",
@@ -389,6 +389,321 @@
           "folder": "{{project.name}}-admin-web/src/main/webapp/WEB-INF",
           "filename": "web.xml",
           "templatePath": "build/web.ftl"
+        },
+        {
+          "name": "index-jsp",
+          "type": "multiple",
+          "folder": "{{project.name}}-admin-web/src/main/webapp/pages",
+          "filename": "index.jsp",
+          "templatePath": "jsp/index.ftl"
+        }
+      ]
+    },
+    {
+      "name": "qdingweb-pro",
+      "templateName": "qdingweb-pro",
+      "staticFileName": "",
+      "taskdef": [
+        {
+          "name": "mkdir",
+          "type": "make-mvn-module",
+          "folder": "service",
+          "filename": "",
+          "templatePath": ""
+        },
+        {
+          "name": "mkdir",
+          "type": "make-mvn-module",
+          "folder": "common",
+          "filename": "",
+          "templatePath": ""
+        },
+        {
+          "name": "mkdir",
+          "type": "make-mvn-module",
+          "folder": "remote",
+          "filename": "",
+          "templatePath": ""
+        },
+        {
+          "name": "mkdir",
+          "type": "make-mvn-module",
+          "folder": "admin-web",
+          "filename": "",
+          "templatePath": ""
+        },
+        {
+          "name": "model",
+          "type": "multiple",
+          "folder": "{{project.name}}-common/src/main/java/{{project.packageName.replace('.','/')}}/domain",
+          "filename": "{{entity.name[0].upper() + entity.name[1:]}}.java",
+          "templatePath": "java/model.ftl"
+        },
+        {
+          "name": "params",
+          "type": "multiple",
+          "folder": "{{project.name}}-common/src/main/java/{{project.packageName.replace('.','/')}}/SearchParams",
+          "filename": "{{entity.name[0].upper() + entity.name[1:]}}Params.java",
+          "templatePath": "java/params.ftl"
+        },
+        {
+          "name": "dao",
+          "type": "multiple",
+          "folder": "{{project.name}}-service/src/main/java/{{project.packageName.replace('.','/')}}/dao",
+          "filename": "I{{entity.name[0].upper() + entity.name[1:]}}Dao.java",
+          "templatePath": "java/dao.ftl"
+        },
+        {
+          "name": "iservice",
+          "type": "multiple",
+          "folder": "{{project.name}}-service/src/main/java/{{project.packageName.replace('.','/')}}/service",
+          "filename": "I{{entity.name[0].upper() + entity.name[1:]}}Service.java",
+          "templatePath": "java/iservice.ftl"
+        },
+        {
+          "name": "serviceImpl",
+          "type": "multiple",
+          "folder": "{{project.name}}-service/src/main/java/{{project.packageName.replace('.','/')}}/service/impl",
+          "filename": "{{entity.name[0].upper() + entity.name[1:]}}ServiceImpl.java",
+          "templatePath": "java/serviceImpl.ftl"
+        },
+        {
+          "name": "controller",
+          "type": "multiple",
+          "folder": "{{project.name}}-admin-web/src/main/java/{{project.packageName.replace('.','/')}}/controller",
+          "filename": "{{entity.name[0].upper() + entity.name[1:]}}Controller.java",
+          "templatePath": "java/controller.ftl"
+        },
+        {
+          "name": "IndexController",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/java/{{project.packageName.replace('.','/')}}/controller",
+          "filename": "IndexController.java",
+          "templatePath": "java/common/IndexController.ftl"
+        },
+        {
+          "name": "ModelResult",
+          "type": "single",
+          "folder": "{{project.name}}-common/src/main/java/{{project.packageName.replace('.','/')}}/common",
+          "filename": "ModelResult.java",
+          "templatePath": "java/common/ModelResult.ftl"
+        },
+        {
+          "name": "PageUtil",
+          "type": "single",
+          "folder": "{{project.name}}-common/src/main/java/{{project.packageName.replace('.','/')}}/common",
+          "filename": "PageUtil.java",
+          "templatePath": "java/common/PageUtil.ftl"
+        },
+        {
+          "name": "mapper",
+          "type": "multiple",
+          "folder": "{{project.name}}-service/src/main/resources/mapper",
+          "filename": "{{entity.name}}.xml",
+          "templatePath": "mappers/mapper.ftl"
+        },
+        {
+          "name": "parent-pom",
+          "type": "single",
+          "folder": "",
+          "filename": "pom.xml",
+          "templatePath": "pom/parent_pom.ftl"
+        },
+        {
+          "name": "admin-pom",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web",
+          "filename": "pom.xml",
+          "templatePath": "pom/admin_pom.ftl"
+        },
+        {
+          "name": "common-pom",
+          "type": "single",
+          "folder": "{{project.name}}-common",
+          "filename": "pom.xml",
+          "templatePath": "pom/common_pom.ftl"
+        },
+        {
+          "name": "service-pom",
+          "type": "single",
+          "folder": "{{project.name}}-service",
+          "filename": "pom.xml",
+          "templatePath": "pom/service_pom.ftl"
+        },
+        {
+          "name": "remote-pom",
+          "type": "single",
+          "folder": "{{project.name}}-remote",
+          "filename": "pom.xml",
+          "templatePath": "pom/remote_pom.ftl"
+        },
+        {
+          "name": "admin-applicationContext",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/resources",
+          "filename": "applicationContext.xml",
+          "templatePath": "config/admin-web/applicationContext.ftl"
+        },
+        {
+          "name": "remote-applicationContext",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/resources",
+          "filename": "applicationContext-remote-servlet.xml",
+          "templatePath": "config/remote-web/applicationContext-remote-servlet.ftl"
+        },
+        {
+          "name": "common-applicationContext",
+          "type": "single",
+          "folder": "{{project.name}}-common/src/main/resources",
+          "filename": "applicationContext-common.xml",
+          "templatePath": "config/base-client/applicationContext-common.ftl"
+        },
+        {
+          "name": "admin-applicationContext-shiro",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/resources",
+          "filename": "applicationContext-shiro.xml",
+          "templatePath": "config/admin-web/applicationContext-shiro.ftl"
+        },
+        {
+          "name": "service-applicationContext-jdbc",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "applicationContext-jdbc.xml",
+          "templatePath": "config/base-service/applicationContext-jdbc.ftl"
+        },
+        {
+          "name": "service-applicationContext-service",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "applicationContext-service.xml",
+          "templatePath": "config/base-service/applicationContext-service.ftl"
+        },
+        {
+          "name": "service-remote",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "spring-remote-common.xml",
+          "templatePath": "config/base-service/spring-remote-common.ftl"
+        },
+        {
+          "name": "service-sqlMapConfig",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "sqlMapConfig.xml",
+          "templatePath": "config/base-service/sqlMapConfig.ftl"
+        },
+        {
+          "name": "service-log4j",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "log4j.properties",
+          "templatePath": "prop/log4j.ftl"
+        },
+        {
+          "name": "service-disconf",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "disconf.properties",
+          "templatePath": "prop/disconf.ftl"
+        },
+        {
+          "name": "service-jdbc",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "jdbc.properties",
+          "templatePath": "prop/jdbc.ftl"
+        },
+        {
+          "name": "service-rpc",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "rpc.properties",
+          "templatePath": "prop/rpc.ftl"
+        },
+        {
+          "name": "service-dictionary",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "dictionary.properties",
+          "templatePath": "prop/dictionary.ftl"
+        },
+        {
+          "name": "service-shiro-redis",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "shiro_redis.properties",
+          "templatePath": "prop/shiro_redis.ftl"
+        },
+        {
+          "name": "front-controllers",
+          "type": "single",
+          "folder": "front/{{project.name}}",
+          "filename": "controllers.js",
+          "templatePath": "front/controllers.ftl"
+        },
+        {
+          "name": "front-css",
+          "type": "single",
+          "folder": "front/{{project.name}}",
+          "filename": "{{project.name}}.css",
+          "templatePath": "front/css.ftl"
+        },
+        {
+          "name": "front-directives",
+          "type": "single",
+          "folder": "front/{{project.name}}",
+          "filename": "directives.js",
+          "templatePath": "front/directives.ftl"
+        },
+        {
+          "name": "front-filters",
+          "type": "single",
+          "folder": "front/{{project.name}}",
+          "filename": "filters.js",
+          "templatePath": "front/filters.ftl"
+        },
+        {
+          "name": "front-module",
+          "type": "single",
+          "folder": "front/{{project.name}}",
+          "filename": "module.js",
+          "templatePath": "front/module.ftl"
+        },
+        {
+          "name": "front-services",
+          "type": "single",
+          "folder": "front/{{project.name}}",
+          "filename": "services.js",
+          "templatePath": "front/services.ftl"
+        },
+        {
+          "name": "front-entity-form",
+          "type": "multiple",
+          "folder": "front/{{project.name}}/templates/partial",
+          "filename": "{{entity.name}}-form.html",
+          "templatePath": "front/templates/partial/entity-form.ftl"
+        },
+        {
+          "name": "front-entity-list",
+          "type": "multiple",
+          "folder": "front/{{project.name}}/templates/",
+          "filename": "{{entity.name}}.html",
+          "templatePath": "front/templates/entity.ftl"
+        },
+        {
+          "name": "webxml",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/webapp/WEB-INF",
+          "filename": "web.xml",
+          "templatePath": "config/admin-web/web.ftl"
+        },
+        {
+          "name": "webxml-remote",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/webapp/WEB-INF",
+          "filename": "web.xml",
+          "templatePath": "config/remote-web/web.ftl"
         },
         {
           "name": "index-jsp",

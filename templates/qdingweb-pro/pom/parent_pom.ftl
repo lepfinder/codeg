@@ -71,6 +71,9 @@
 		<passport.version>1.0</passport.version>
 		<dictionary-client>3.0.1-SNAPSHOT</dictionary-client>
 		<order-api.version>0.0.1-SNAPSHOT</order-api.version>
+		<imessage.version>0.0.1-SNAPSHOT</imessage.version>
+		<schedule-client.version>0.0.1-SNAPSHOT</schedule-client.version>
+        <dictionary-client>3.0.2-SNAPSHOT</dictionary-client>
 	</properties>
 
 
@@ -385,19 +388,40 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.baidu.disconf</groupId>
-				<artifactId>disconf-client</artifactId>
-				<version>2.6.25-SNAPSHOT</version>
+                <groupId>com.baidu.disconf</groupId>
+                <artifactId>disconf-client</artifactId>
+                <version>2.6.25-SNAPSHOT</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>org.slf4j</artifactId>
+                        <groupId>slf4j-log4j12</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>ch.qos.logback</artifactId>
+                        <groupId>logback-classic</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+				<groupId>com.qdingnet</groupId>
+				<artifactId>imessage-client</artifactId>
+				<version>${imessage.version}</version>
 				<exclusions>
 					<exclusion>
-						<artifactId>org.slf4j</artifactId>
-						<groupId>slf4j-log4j12</groupId>
-					</exclusion>
-					<exclusion>
-						<artifactId>ch.qos.logback</artifactId>
-						<groupId>logback-classic</groupId>
+						<groupId>ch.qos.logback</groupId>
+						<artifactId>logback-classic</artifactId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.qding.dictionary</groupId>
+				<artifactId>dictionary-client</artifactId>
+				<version>${dictionary-client}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.qdingnet</groupId>
+				<artifactId>schedule-client</artifactId>
+				<version>${schedule-client.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
