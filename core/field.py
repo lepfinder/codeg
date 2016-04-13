@@ -13,7 +13,7 @@ class Field():
         self.javaType = self.get_java_type()
         self.isPrimaryKey = 0
         self.isSearchable = 0
-        print self.dbType,'--->',self.javaType
+        print self.dbType,'--->',self.javaType,'--->',self.label
 
     def get_java_name(self):
         self.javaName = ''

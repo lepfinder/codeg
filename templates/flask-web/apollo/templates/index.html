@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if not messages %}
+<div class="jumbotron">
+  <h3 class="text-center"><small>钱钟书说借书是恋爱的开始，一借一还就有了两次接触机会，而且自然而然不着痕迹。<span class="text-danger">寻找那本书和你的哪个人吧！</span></small>
+  </h3>
+</div>
+{% endif %}
+{% endwith %}
+
+<div class="container">
+	<div class="row label-box" >
+		<span>&nbsp;&nbsp;<strong>热门标签：</strong></span>
+		{% for tag in tag_list %}
+		<span class="label label-default">
+			<a href="{{url_for('books.tag_books',tag_id=tag.id)}}">{{tag.name}}</a>
+		</span>
+      	{% endfor %}
+      	<a href="{{url_for('books.tags')}}"><small>更多</small></a>
+	</div><br/>
+    <div class="row label-box" >
+		<span>&nbsp;&nbsp;<strong>城市标签：</strong></span>
+		{% for item in city_list %}
+		<span class="label label-default">
+			<a href="{{ url_for('books.city_books',city=item.city) }}">{{item.city}}</a>
+		</span>
+      	{% endfor %}
+		<p style="margin-top: 10px;" class="text-muted">&nbsp;&nbsp;<small>书香馆共有 {{page_obj.total}} 本书</small></p>
+	</div>
+    <div class="row">
+      {% for a in page_obj.items %}
+      <div class="col-xs-6 col-md-4 col-lg-3">
+      	<table>
+      		<tr>
+	      		<td width="110px;">
+			        <a href="/books/{{a.id}}" class="thumbnail">
+			          <img data-src="holder.js/100%x180" alt="100%x180" style="height: 158px; width: 108px; display: block;" src="{{a.image}}" data-holder-rendered="true">
+			        </a>
+			    </td>
+		    	<td class="book-info">
+		    		<small>
+						<p>书名：{{a.title[:10]}}</p>
+						<p>豆瓣评分：{{a.rating}}</p>
+						<p>作者：{{a.author[:12]}}</p>
+						<!--
+                        <p>出版社：{{a.publisher[:7]}}</p>
+                        -->
+						<p>共享人：{{a.owner_name}}</p>
+						<p>所在城市：<span class="text-danger" style="font-size: 1.2em">{{a.city}}</span></p>
+						<p>当前持有人：{{a.borrow_name}}</p>
+					</small>
+				</td>
+    		</tr>
+        </table>
+      </div>
+      {% endfor %}
+      
+    </div>
+    <div class="row">
+    	<nav class="pull-right">
+
+		  <ul class=pagination>
+		  	<li>
+		      <a href="javascript:go_page(1)" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+			  {%- for page in page_obj.iter_pages() %}
+			    {% if page %}
+			      {% if page != page_obj.page %}
+			        <li><a href="javascript:go_page({{page}})">{{ page }}</a></li>
+			      {% else %}
+			        <li class="active"><a>{{ page }}</a></li>
+			      {% endif %}
+			    {% else %}
+			    {% endif %}
+			  {%- endfor %}
+			  <li>
+		      <a href="javascript:go_page({{page_obj.pages}})" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</nav>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+
+	function go_page(page){
+		$("#page_index").val(page);
+		$("#book_search").submit();
+	}
+
+	
+</script>
+
+{% endblock %}

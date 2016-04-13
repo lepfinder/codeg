@@ -136,7 +136,8 @@ class Manager():
             port=int(self.project.db_port),
             user=self.project.db_username,
             passwd=self.project.db_password,
-            connect_timeout=6000
+            connect_timeout=6000,
+            charset='utf8'
         )
         self.cur = self.dbconn.cursor()
 

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if not messages %}
+<div class="jumbotron">
+  <h3 class="text-center"><small>钱钟书说借书是恋爱的开始，一借一还就有了两次接触机会，而且自然而然不着痕迹。<span class="text-danger">寻找那本书和你的哪个人吧！</span></small>
+  </h3>
+</div>
+{% endif %}
+{% endwith %}
+
+<div class="container">
+    <div class="row">
+	  <div class="page-header"><h4>所有标签</h4></div>
+      <div class="label-box">
+      {% for tag in tags %}
+	    <div class="col-xs-2 col-md-2 col-lg-2 my_tag">
+			<a href="{{url_for('books.tag_books',tag_id=tag.id)}}">{{tag.name}}</a>
+		</div>
+      {% endfor %}
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -38,6 +38,9 @@ pip install -r requirements.txt
 以上是mac上的操作
 如果 windows 自己研究 
 ```
+
+
+
 2. 修改project_def目录下的qdingweb-base.json配置文件
 ```
 {
@@ -79,6 +82,43 @@ manager.set_pdef_name("qdingweb-base.json")
 manager.create()
 
 ```
+
+## 部署
+```
+安装setuptools
+pip instlal virtualenv
+virtualenv venv
+. venv/bin/activate
+
+pip install -r requirement.txt
+
+安装过程中如果出现如下错误,参考如下解决方案解决.
+安装mysql-python
+下载MySQL-python-1.2.3.tar.gz（见附件），解压到指定目录。
+到解压后的MySQL-python-1.2.3目录下编译配置MySQL-python：
+python setup.py build
+此时系统报错：EnvironmentError: mysql_config not found
+很明显没有mysql_config这个文件
+执行find / -name mysql_config，没有任何数据，表明系统中没有mysql_config这个文件
+
+
+网上有人解释说使用apt-get安装的MySQL是没有mysql_config这个文件的
+解决办法：
+（1）ubuntu下
+执行sudo apt-get install libmysqld-dev
+（2）fedora下
+执行 sudo yum install python-devel
+若出现：my_config.h:没有那个文件或目录，就执行：sudo yum install mysql-devel
+注意：yum也是python写的，默认是调用/usr/bin/python的，这是系统本身自带的python，自己安装的一般在/usr/local/bin/python，所以最好别把系统自带的python给卸载掉了，自己下载的python没有yum模块。
+
+此时执行  find / -name mysql_config 在/usr/bin/下发现了这个文件
+然后修改MySQL-python-1.2.3目录下的site.cfg文件
+去掉mysql_config=XXX这行的注释，并改成mysql_config=/usr/bin/mysql_config（以mysql_config文件所在机器上的目录为准）
+执行下面命令，此时可以成功编译安装了：
+python setup.py build
+python setup.py install
+```
+
 ## 项目配置
 codeg所有的配置都是json格式。
 
@@ -178,6 +218,8 @@ codeg提供了足够的扩展能力支持各种代码生成。
 2. 在 templates文件夹下新建一个文件夹，里面编写自己的模板文件
 3. 再project_def文件夹下创建一个项目配置文件，定义项目配置
 4. 测试生成
+
+
 
 
 ## TODO

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+
+			<div class="page-header">
+				<h3>当前借阅的图书
+					{% if current_borrow_book %}
+					<sub><small>归还倒计时：<span class="text-danger" style="font-size: 1.8em;"><em>{{surplus_days}}</em></span> 天</small></sub>
+	    			{% endif %}
+
+				</h3>
+			</div>
+			{% if current_borrow_book %}
+		    <div class="row" style="padding-left: 15px;">
+		      	<table>
+		      		<tr>
+			      		<td width="110px;">
+					        <a href="/books/{{current_borrow_book.id}}" class="thumbnail">
+					          <img data-src="holder.js/100%x180" alt="100%x180" style="height: 158px; width: 108px; display: block;" src="{{current_borrow_book.image}}" data-holder-rendered="true">
+					        </a>
+					    </td>
+				    	<td class="book-info">
+				    		<small>
+								<p>书名：{{current_borrow_book.title[:10]}}</p>
+								<p>作者：{{current_borrow_book.author[:12]}}</p>
+								<p>出版社：{{current_borrow_book.publisher[:7]}}</p>
+								<p>价格：{{current_borrow_book.price}}</p>
+								<p>共享人：{{current_borrow_book.owner_name}}</p>
+                                <p>所在城市：<span class="text-danger" style="font-size: 1.2em">{{current_borrow_book.city}}</span></p>
+
+								<p>当前持有人：{{current_borrow_book.borrow_name}}</p>
+							</small>
+						</td>
+						<td valign="bottom">
+						{% if current_user.is_authenticated and current_borrow_book.status==1 %}
+				    		<a class="btn btn-primary btn-block" onClick="reback({{current_borrow_book.id}},'{{current_borrow_book.owner_name}}')"><span class="glyphicon glyphicon-book"></span> 我要还这本书</a>
+			    		{% endif %}
+						</td>
+		    		</tr>
+		        </table>
+		    </div>
+    		{% endif %}
+			{% if not current_borrow_book %}
+			你当前没有借阅任何图书。
+    		{% endif %}
+
+			<div class="page-header">
+				<h3>我分享的图书
+<sub><small>共分享了 <span class="text-danger" style="font-size: 1.8em;"><em>{{share_book_list.count()}}</em></span> 本书</small></sub>
+				</h3>
+			</div>
+		    <div class="row" style="padding-left: 15px;">
+		      {% for a in share_book_list %}
+		      <div class="col-xs-6 col-md-4 col-lg-4">
+		      	<table>
+		      		<tr>
+			      		<td width="110px;">
+					        <a href="/books/{{a.id}}" class="thumbnail">
+					          <img data-src="holder.js/100%x180" alt="100%x180" style="height: 158px; width: 108px; display: block;" src="{{a.image}}" data-holder-rendered="true">
+					        </a>
+					    </td>
+				    	<td class="book-info">
+				    		<small>
+								<p>书名：{{a.title[:10]}}</p>
+								<p>豆瓣评分：{{a.rating}}</p>
+								<p>作者：{{a.author[:12]}}</p>
+								<!--<p>出版社：{{a.publisher[:7]}}</p>-->
+								<p>共享人：{{a.owner_name}}</p>
+                                <p>所在城市：<span class="text-danger" style="font-size: 1.2em">{{a.city}}</span></p>
+
+								<p>当前持有人：{{a.borrow_name}}</p>
+							</small>
+						</td>
+		    		</tr>
+		        </table>
+		      </div>
+		      {% endfor %}
+		      {% if not share_book_list %}
+				你当前没有分享任何图书。 <a href="{{url_for('books.share')}}">我要共享</a>
+	    	  {% endif %}
+		    </div>
+		</div>
+
+		<div class="col-md-3">
+			<div class="page-header">
+				<h3>借阅历史</h3>
+			</div>
+			{% for a in borrow_log_list %}
+     		<div class="well">
+	    		<small>
+					<h6 class="text-success">书名：{{a.book_name}}</h6>
+					<p>借阅时间：{{a.create_time}}</p>
+					<p>约定归还时间：{{a.reback_time}}</p>
+					<p>实际归还时间：{{a.real_reback_time}}</p>
+				</small>
+			</div>
+      		{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+	function reback(book_id,owner){
+		if(confirm("请找 【"+owner+"】 确认还书。")){
+			location.href="/books/reback/"+book_id;
+		}
+	}
+</script>
+{% endblock %}

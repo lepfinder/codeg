@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block css%}
+{% endblock%}
+
+{% block content %}
+<div class="container">
+
+	<div class="row">
+		<div class="page-header"> <h3>我要共享图书 ~</h3></div>
+		
+		<form  class="form-horizontal" action="javascript:preview()">
+		  <div id="step1">
+			  <div class="alert alert-info">
+				<p>
+				  	<larger class="text-danger">提示：</larger>
+				  	<span class="">请输入图书的ISBN编号，系统会自动获取图书信息，确认后即可完成共享。</span>
+				</p>
+		      </div>
+			  <div class="form-group">
+			    <label for="inputEmail3" class="col-sm-2 control-label">ISBN：</label>
+			    <div class="col-sm-6">
+			      <input type="input" class="form-control" name="isbn" id="isbn" placeholder="请输入图书背面的isbn编号后，点击查询" value="9787111525820">
+			    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-3">
+			      <a onClick="preview()"  class="btn btn-primary btn-block"><span class="glyphicon glyphicon-share"></span> <span id="preview_btn">查询豆瓣</span></a>
+			    </div>
+			  </div>
+		  </div>
+		
+
+		  <div id="step2" class="" style="display: none;">
+			<div class="row">
+				<div class="col-md-2">
+					<img id="pre_img" width="120" height="168"/>
+				</div>
+				<div class="col-md-9">
+					<p id="pre_rating">豆瓣评分：</p>
+					<p id="pre_title">书名：</p>
+					<p id="pre_author">作者：</p>
+					<p id="pre_publisher">出版社：</p>
+					<p id="pre_price">价格：</p>
+					<p id="pre_summary">简介：</p>
+				</div>
+			</div>
+
+			<div class="row" style="margin-top:20px;">
+				<div class="form-group" >
+			      <label for="city" class="col-sm-2 control-label">
+			      	<span class="pull-right">选择所在城市：</span><span class="text-danger">* </span></label>
+			      <div class="col-sm-2">
+			      	<select id="city" class="form-control">
+			      		<option value="北京">北京</option>
+			      		<option value="重庆">重庆</option>
+			      		<option value="成都">成都</option>
+			      		<option value="上海">上海</option>
+			      		<option value="西安">西安</option>
+			      		<option value="深圳">深圳</option>
+			      	</select>
+			      </div>
+			    </div>
+				
+			</div>
+		  
+		    <div class="row" style="margin-top:20px;">
+				<div class="form-group" >
+			      <label for="recommend" class="col-sm-2 control-label">
+			      	<span class="pull-right">推荐语：</span></label>
+			      <div class="col-sm-6">
+			        <textarea id="recommend" name="recommend" cols="90" rows="6"></textarea>
+			      </div>
+			    </div>
+				
+			</div>
+
+
+			<div class="row">
+			    <div class=" col-sm-4">
+			      <p style="margin-top: 15px;">
+				      <button onClick="share()" id="ok" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-share"></span> 确认无误，就是它了</button>
+				  </p>
+			    </div>
+			    <!--
+			    <div class=" col-sm-2">
+			      <p style="margin-top: 15px;">
+				      <button onClick="goStep1()"  class="btn btn-success btn-block"><span class="glyphicon glyphicon-share"></span> 返回上一步</button>
+				  </p>
+			    </div>
+				-->
+		    </div>
+
+		    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		  </div>
+
+		</form>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+	$(function(){
+		$("#step2").hide();
+
+        console.log("{{ current_user.city }}");
+        if("{{ current_user.city }}" != 'None'){
+            $("#city").val("{{ current_user.city }}")
+        }
+
+	})
+
+	function preview(){
+		if($("#isbn").val()){
+			$("#preview_btn").text("正在查询，请稍等......");
+			$.get("/api/douban_book_info/",{
+				isbn : $("#isbn").val()
+			},function(data){
+				res = JSON.parse(data)
+				if(res.title){
+					$("#step2").show();
+					$("#step1").hide();
+
+					$("#pre_img").attr("src",res.image)
+					$("#pre_rating").text("豆瓣评分："+res.rating.average)
+					$("#pre_title").text("书名："+res.title)
+					$("#pre_author").text("作者："+res.author)
+					$("#pre_publisher").text("出版社："+res.publisher)
+					$("#pre_price").text("价格："+res.price)
+					$("#pre_summary").text("简介："+res.summary)
+				}else{
+					alert("木有找到对应的书籍，请手动添加。")
+					$("#preview_btn").text("查询豆瓣");
+
+				}
+			});
+		}else{
+			alert("ISBN不能为空");
+		}
+	}
+
+	function share(){
+		$("#ok").attr("disabled","true")
+		$("#ok").html("正在处理中，请稍等")
+		$.post("/books/share/",{
+			isbn : $("#isbn").val(),
+			city : $("#city").val(),
+			recommend : $("#recommend").val()
+		},function(data){
+			if(data.code == 200){
+				location.href="/books/"
+			}else{
+				alert(data.message);
+				location.href="/books/"
+			}
+		});
+	}
+
+	function goStep1(){
+		$("#preview_btn").text("查询豆瓣");
+		$("#step1").show();
+		$("#step2").hide();
+	}
+</script>
+
+{% endblock %}

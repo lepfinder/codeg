@@ -1,19 +1,16 @@
 {
   "project": {
-    "folder_name": "qding-order",
-    "name": "order",
-    "desc": "订单平台",
-    "packageName": "com.qding.order",
+    "folder_name": "qding-task",
+    "name": "task",
+    "desc": "任务平台",
+    "packageName": "com.qding.task",
     "group": "qdingweb-pro"
   },
   "dbinfo": {
     "host": "10.37.253.31",
     "port": "3307",
-    "name": "qding_platform",
+    "name": "qding_task",
     "username": "dev",
-    "password": "458kT*!W",
-    "tables" : [
-      "order_base"
-    ]
+    "password": "458kT*!W"
   }
 }

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+	<div class="page-header">
+		<h3>{{book.title}} 
+			<sub>
+				<span class="label label-danger">
+					{% if book.status == 0 %}
+					<span class="glyphicon glyphicon-hand-right"></span>
+					此书正在空闲中，赶紧把我领走吧
+					{% endif %}
+					{% if book.status == 1 %}
+					<span class="glyphicon glyphicon-hand-right"></span>
+					此书正在被{{book.borrow_name}}童鞋借阅中，暂时不能被别人借阅了。
+					{% endif %}
+					{% if book.status == 2 %}
+					<span class="glyphicon glyphicon-hand-right"></span>
+					此书正在被<span class="text-warning">{{book.borrow_name}}</span>童鞋归还中，马上就可以借阅了。
+					{% endif %}
+				</span>
+			</sub>
+		</h3>
+	</div>
+    <div class="row">
+     	<div class="col-md-8">
+	      	<table>
+	      		
+	      		<tr>
+		      		<td width="110px;">
+				        <a href="#" class="thumbnail">
+				          <img data-src="holder.js/100%x180" alt="100%x180" style="height: 158px; width: 108px; display: block;" src="{{book.image}}" data-holder-rendered="true">
+				        </a>
+				    </td>
+			    	<td class="book-info">
+			    		<small>
+							<p>作者：{{book.author}}</p>
+							<p>出版社：{{book.publisher}}</p>
+							<p>价格：{{book.price}}</p>
+							<p>共享人：{{book.owner_name}}</p>
+                            <p>所在城市：<span class="text-danger" style="font-size: 1.2em">{{book.city}}</span></p>
+							<p>当前持有人：{{book.borrow_name}}</p>
+							<p>借阅次数：{{book.borrow_counts}}</p>
+						</small>
+					</td>
+					<td valign="bottom">
+					{% if current_user.is_authenticated %}
+
+		    			{% if current_user.id | int == book.borrow_id and book.status==1 %}
+			    		<a class="btn btn-primary btn-block" onClick="reback({{book.id}})"><span class="glyphicon glyphicon-book"></span> 我要还这本书</a>
+			    		{% endif %}
+			    		{% if current_user.id | int != book.borrow_id and book.status==0%}
+			    		<a class="btn btn-success btn-block" onClick="borrow({{book.id}},'{{ book.city }}')"><span class="glyphicon glyphicon-book"></span> 我要借这本书</a>
+			    		{% endif %}
+			    		
+		    		{% endif %}
+					</td>
+	    		</tr>
+	    		
+	        </table>
+	        <p>
+	        	<div class="text-success">内容简介：</div>
+	        	<small>&nbsp;&nbsp;&nbsp;&nbsp;{{book.summary}}</small>
+	    	</p><br/>
+
+	    	<div>
+	    	  {% if book.recommend %}
+    		  <p>
+	        	<div class="text-success">分享人推荐语：</div>
+	        	<small>&nbsp;&nbsp;&nbsp;&nbsp;{{book.recommend}}</small>
+	    	  </p>
+	    	  {% endif %}
+	    	</div><br/>
+	    	<!-- 登录后可以评价 -->
+	        {% if current_user.is_authenticated %}
+	    	<div class="comment-box">
+	    	  {% if comments %}
+    		  <p>
+	        	<div class="text-success">评价：</div>
+	        	{% for a in comments %}
+	        	<div class="well">
+		    		<small>
+						<p class="text-muted">
+							{{a.account_name}} 发表于 {{a.create_time}}</p><hr/>
+						<p>{{a.content}}</p>
+					</small>
+				</div>
+	      		{% endfor %}
+	    	  </p>
+	    	  {% endif %}
+	    	</div><br/>
+    	   {% endif %}
+
+	    	<hr/>
+    	    <form action="{{url_for('books.comment')}}" method="post">
+	    	<div>
+	    		<input type="hidden" name="book_id" value="{{book.id}}"/>
+	    		我来说两句：<br/><textarea name="content" id="" cols="90" rows="5"></textarea>
+	    		<input type="submit" class="btn" value="发表"/>
+	    	</div>
+	    	</form>
+
+	    	<br/><br/><br/>
+    	</div>
+     	<div class="col-md-4">
+     		<div class="page-header"><h4>借阅历史</h4></div>
+
+     		{% for a in borrow_log_list %}
+     		<div class="well">
+	    		<small>
+					<p>借阅人：{{a.account_name}}</p>
+					<p>借阅时间：{{a.create_time}}</p>
+					<p>约定归还时间：{{a.reback_time}}</p>
+					<p>实际归还时间：{{a.real_reback_time}}</p>
+				</small>
+			</div>
+      		{% endfor %}
+		</div>
+      
+    </div>
+
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script type="text/javascript">
+
+	function reback(book_id){
+		if(confirm("确定要归还此书？")){
+			location.href="/books/reback/"+book_id;
+		}
+	}
+
+	function borrow(book_id,book_city){
+        console.log(book_city)
+        console.log('{{ current_user.city }}')
+        current_user_city = '{{ current_user.city }}';
+        if(current_user_city != 'None'){
+            if(current_user_city != book_city){
+               if(confirm("你当前的城市是" + current_user_city +",你所借的图书所在城市是:"+book_city + ",你确定要继续借此书么吗?")){
+                   location.href="/books/borrow/"+book_id;
+               }
+            }
+        }else{
+            location.href="/books/borrow/"+book_id;
+        }
+	}
+	
+</script>
+
+{% endblock %}
