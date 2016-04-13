@@ -26,7 +26,7 @@ def gen():
 	content = request.form['config']
 	
 	pdef = json.loads(content)
-	pdef['project']['group'] = 'qdingweb'
+	pdef['project']['group'] = 'qdingweb-pro'
 
 	#pdef['dbinfo']['host'] = db_host
 	#pdef['dbinfo']['port'] = db_port

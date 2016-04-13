@@ -177,7 +177,7 @@ class Manager():
                 field_list.append(Field(
                     c['name'],
                     c['type'],
-                    lable
+                    lable.encode("utf-8")
                 ))
             entity.set_fields(field_list)
 
