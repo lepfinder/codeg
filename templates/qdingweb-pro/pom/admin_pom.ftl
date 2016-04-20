@@ -87,6 +87,10 @@
             <artifactId>ant</artifactId>
             <version>${ant_version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.qdingnet</groupId>
+            <artifactId>manager-shiro</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <finalName>adminbg</finalName>

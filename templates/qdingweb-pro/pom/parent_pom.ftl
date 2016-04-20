@@ -388,6 +388,12 @@
 			</dependency>
 
 			<dependency>
+               <groupId>com.qdingnet</groupId>
+               <artifactId>manager-shiro</artifactId>
+               <version>3.0-SNAPSHOT</version>
+            </dependency>
+
+			<dependency>
                 <groupId>com.baidu.disconf</groupId>
                 <artifactId>disconf-client</artifactId>
                 <version>2.6.25-SNAPSHOT</version>

@@ -90,7 +90,7 @@ pip instlal virtualenv
 virtualenv venv
 . venv/bin/activate
 
-pip install -r requirement.txt
+pip install -r requirements.txt
 
 安装过程中如果出现如下错误,参考如下解决方案解决.
 安装mysql-python

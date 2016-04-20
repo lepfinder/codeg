@@ -1,3 +1,4 @@
 target/*
 *.pyc
 .idea/*
+venv/*
