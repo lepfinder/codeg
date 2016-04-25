@@ -111,6 +111,9 @@ class Manager():
 
         # print pdef
         # 加载项目定义信息
+        if not pdef['project'].has_key('group'):
+            pdef['project']['group'] = "qdingweb-pro"
+
         self.project = Project(
             pdef['project']['folder_name'],
             pdef['project']['name'],

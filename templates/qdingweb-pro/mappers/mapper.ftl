@@ -35,18 +35,29 @@
      </foreach>
     </insert>
 
-    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String" >
       select 
         <include refid="Base_Column_List" />
       from {{entity.tableName}}
       where id = #{id}
     </select>
 
-    <delete id="deleteById" parameterType="java.lang.Long" >
+    <delete id="deleteById" parameterType="java.lang.String" >
       update {{entity.tableName}}
       set isdel = 1
       where id = #{id}
     </delete>
+
+    <update id="updateById" parameterType="{{project.packageName}}.domain.{{entityName}}" >
+        update {{entity.tableName}}
+        <set >
+          {% for field in entity.fieldList %}
+          <if test="{{field.javaName}} != null" >
+            {{field.dbName}} = #{ {{field.javaName}} },
+          </if>{% endfor %}
+        </set>
+        where id = #{id}
+    </update>
 
 
     <!-- 根据条件查询数量-->

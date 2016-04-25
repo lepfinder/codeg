@@ -40,8 +40,6 @@
         </property>
 		<property name="filterChainDefinitions">
 			<value>
-				/schedule* = anon
-                /wsServer/* =anon
 				/** = qdfilter
 			</value>
 		</property>

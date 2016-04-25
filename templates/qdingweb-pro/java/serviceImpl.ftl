@@ -44,7 +44,14 @@ public class {{entityName}}ServiceImpl implements I{{entityName}}Service {
     }
 
     @Override
-    public {{entityName}} getById(Long id) {
+    public {{entityName}} update{{entityName}}({{entityName}} {{entity.name}}) {
+        {{entity.name}}Dao.updateById({{entity.name}});
+
+        return {{entity.name}};
+    }
+
+    @Override
+    public {{entityName}} getById(String id) {
         
         {{entityName}} {{entity.name}} = {{entity.name}}Dao.selectById(id);
 
@@ -52,7 +59,7 @@ public class {{entityName}}ServiceImpl implements I{{entityName}}Service {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
        
         {{entity.name}}Dao.deleteById(id);
 

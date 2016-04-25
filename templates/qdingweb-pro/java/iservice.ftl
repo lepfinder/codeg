@@ -24,18 +24,25 @@ public interface I{{entityName}}Service {
      */
     {{entityName}} save{{entityName}}({{entityName}} {{entity.name}});
 
+    /**
+     * 更新{{entity.name}}
+     * @param user {{entity.label}}
+     * @return
+     */
+    {{entityName}} update{{entityName}}({{entityName}} {{entity.name}});
+
 
     /**
      * 根据ID获取{{entity.name}}
      * @param id
      * @return
      */
-    {{entityName}} getById(Long id);
+    {{entityName}} getById(String id);
 
     /**
      * 删除{{entity.name}}
      * @param id
      * @return
      */
-    void deleteById(Long id);
+    void deleteById(String id);
 }

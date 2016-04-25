@@ -80,7 +80,7 @@ public class {{entityName}}Controller extends MultiActionController {
      */
     @RequestMapping(value = "getById",method= RequestMethod.GET)
     @ResponseBody
-    public Object getById(Long id) {
+    public Object getById(String id) {
         logger.info("get {{entity.name}} by id.");
 
         ModelResult modelResult = new ModelResult(ModelResult.CODE_200);
@@ -99,7 +99,7 @@ public class {{entityName}}Controller extends MultiActionController {
      */
     @RequestMapping(value = "deleteById",method= RequestMethod.POST)
     @ResponseBody
-    public Object deleteById(Long id) {
+    public Object deleteById(String id) {
         logger.info("save {{entity.name}}.");
         ModelResult modelResult = new ModelResult(ModelResult.CODE_200);
         

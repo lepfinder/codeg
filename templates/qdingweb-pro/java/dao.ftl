@@ -11,12 +11,14 @@ public interface I{{entityName}}Dao {
 
     public Long batchInsert(List<{{entityName}}> list);
 
-    public {{entityName}} selectById(Long id);
+    public {{entityName}} selectById(String id);
 
     public List<{{entityName}}> getPageListByParam(HashMap<String, Object> param);
 
     public Integer getPageCountByParam(HashMap<String, Object> paramMap);
 
-    public void deleteById(Long id);
+    public void deleteById(String id);
+
+    public void update({{entityName}} {{entity.name}});
 
 }

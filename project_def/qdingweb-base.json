@@ -1,15 +1,14 @@
 {
   "project": {
-    "folder_name": "qding-task",
-    "name": "task",
-    "desc": "任务平台",
-    "packageName": "com.qding.task",
-    "group": "qdingweb-pro"
+    "folder_name": "qding-shield",
+    "name": "shield",
+    "desc": "反作弊系统",
+    "packageName": "com.qding.shield"
   },
   "dbinfo": {
     "host": "10.37.253.31",
     "port": "3307",
-    "name": "qding_task",
+    "name": "qding_shield",
     "username": "dev",
     "password": "458kT*!W"
   }
