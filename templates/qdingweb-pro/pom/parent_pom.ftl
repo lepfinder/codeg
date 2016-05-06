@@ -41,8 +41,6 @@
 		<junit_version>4.11</junit_version>
 		<servlet_version>3.0.1</servlet_version>
 		<curator_version>1.1.16</curator_version>
-		<mongo_version>2.11.3</mongo_version>
-		<mongo_jongo_version>1.0</mongo_jongo_version>
 		<c3p0.version>0.9.2.1</c3p0.version>
 		<jackson.version>2.3.0</jackson.version>
 		<jstl.version>1.2</jstl.version>
@@ -56,7 +54,6 @@
 		<mybatis-spring_version>1.2.2</mybatis-spring_version>
 		<mybatis_version>3.2.8</mybatis_version>
 		<druid_version>1.0.8</druid_version>
-		<gson.version>1.7.1</gson.version>
 		<codec_version>1.9</codec_version>
 		<zxing.core.version>3.1.0</zxing.core.version>
 		<zxing.javase.version>3.1.0</zxing.javase.version>
@@ -65,8 +62,6 @@
 		<async-http-client.version>1.7.16</async-http-client.version>
 		<commons-io.version>1.3.2</commons-io.version>
 		<httpmime.version>4.2.1</httpmime.version>
-		<poi.version>3.9</poi.version>
-		<poi-ooxml.version>3.9</poi-ooxml.version>
 		<quartz.version>1.5.2</quartz.version>
 		<passport.version>1.0</passport.version>
 		<dictionary-client>3.0.1-SNAPSHOT</dictionary-client>
@@ -262,17 +257,7 @@
 				<version>${servlet_version}</version>
 				<scope>provided</scope>
 			</dependency>
-			<!-- add mongodb by mahui 2013.11.18 -->
-			<dependency>
-				<groupId>org.mongodb</groupId>
-				<artifactId>mongo-java-driver</artifactId>
-				<version>${mongo_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jongo</groupId>
-				<artifactId>jongo</artifactId>
-				<version>${mongo_jongo_version}</version>
-			</dependency>
+			
 			
 			<dependency>
 				<groupId>com.mchange</groupId>
@@ -299,21 +284,7 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring_version}</version>
 			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-core</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-annotations</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
+			
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>jstl</artifactId>
@@ -324,27 +295,8 @@
 				<artifactId>commons-fileupload</artifactId>
 				<version>${fileupload.version}</version>
 			</dependency>
-			<!-- poi jar -->
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi</artifactId>
-				<version>${poi.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml</artifactId>
-				<version>${poi.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-scratchpad</artifactId>
-				<version>${poi.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>${hib.validator.version}</version>
-			</dependency>
+			
+			
 			<dependency>
 				<groupId>com.caucho</groupId>
 				<artifactId>hessian</artifactId>
@@ -428,6 +380,22 @@
 				<groupId>com.qdingnet</groupId>
 				<artifactId>schedule-client</artifactId>
 				<version>${schedule-client.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
