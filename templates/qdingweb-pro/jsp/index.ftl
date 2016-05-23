@@ -17,7 +17,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>千丁互联（龙湖地产）</title>
+    <title>千丁互联</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="shortcut icon" href="<%=staticHost %>/public/favicon.ico" type="image/x-icon" />
