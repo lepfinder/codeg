@@ -9,6 +9,8 @@ public interface I{{entityName}}Dao {
 
     public Long insert({{entityName}} {{entity.name}});
 
+    public Long updateById({{entityName}} {{entity.name}});
+
     public Long batchInsert(List<{{entityName}}> list);
 
     public {{entityName}} selectById(String id);
