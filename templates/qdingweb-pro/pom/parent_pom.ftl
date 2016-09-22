@@ -107,7 +107,7 @@
 	        <dependency>
 	            <groupId>com.qding.framework</groupId>
 	            <artifactId>framework-common</artifactId>
-	            <version>0.0.11-SNAPSHOT</version>
+	            <version>0.0.14-SNAPSHOT</version>
 	        </dependency>
 			<dependency>
 				<groupId>commons-io</groupId>

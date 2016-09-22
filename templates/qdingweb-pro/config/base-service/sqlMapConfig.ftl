@@ -13,6 +13,10 @@
 		<!-- 设置超时时间，它决定驱动等待一个数据库响应的时间。 -->
 		<setting name="defaultStatementTimeout" value="25000" />
 	</settings>
+
+	<plugins>
+		<plugin interceptor="com.qding.framework.common.log.MybatisLogPlugin"></plugin>
+	</plugins>
 	
 	<!-- 指定映射器路径 -->
 	<mappers>

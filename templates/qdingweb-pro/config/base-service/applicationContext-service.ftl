@@ -16,6 +16,12 @@
     <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
     <context:component-scan base-package="com.baidu,com.qding"/>
 
+    <!-- 开启日志自动输出-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <bean class="{{project.packageName}}.service.log.TracerLogAspect" />
+
+
+
     <!-- 使用disconf必须添加以下配置 -->
     <bean id="disconfMgrBean" class="com.baidu.disconf.client.DisconfMgrBean"
           destroy-method="destory">

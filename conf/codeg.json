@@ -496,6 +496,13 @@
           "templatePath": "java/common/PageUtil.ftl"
         },
         {
+          "name": "TracerLogAspect",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/java/{{project.packageName.replace('.','/')}}/service/log",
+          "filename": "TracerLogAspect.java",
+          "templatePath": "java/TracerLogAspect.ftl"
+        },
+        {
           "name": "mapper",
           "type": "multiple",
           "folder": "{{project.name}}-service/src/main/resources/mapper",
