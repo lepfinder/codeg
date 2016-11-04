@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by xiexiyang on 15/4/12.
  */
 @Controller
 @RequestMapping("/admin/{{entity.name}}")

@@ -21,6 +21,4 @@ public interface I{{entityName}}Dao {
 
     public void deleteById(String id);
 
-    public void update({{entityName}} {{entity.name}});
-
 }

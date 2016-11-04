@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by xiexiyang on 15/4/11.
  */
 @Service("{{entity.name}}Service")
 public class {{entityName}}ServiceImpl implements I{{entityName}}Service {

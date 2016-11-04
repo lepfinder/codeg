@@ -10,7 +10,6 @@ import org.aspectj.lang.annotation.Aspect;
  *
  * 日志输出切面实现：
  * 类型：http/rpc/resouce:
- * Created by qd on 2015/11/25.
  */
 @Aspect
 public class TracerLogAspect extends LogAspect {

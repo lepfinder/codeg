@@ -12,7 +12,6 @@ import java.util.Map;
  * User: xiyang
  * Date: 14-10-20
  * Time: 下午5:12
- * To change this template use File | Settings | File Templates.
  */
 public class ModelResult<T> implements Serializable{
     public static final Integer CODE_0 = 0;

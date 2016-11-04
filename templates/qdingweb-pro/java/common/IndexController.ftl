@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 /**
- * @author xie.xy
- * @date 2013-7-19
  */
 @Controller
 @RequestMapping("/")

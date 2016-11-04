@@ -7,7 +7,6 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 
 /**
- * Created by xiexiyang on 15/4/12.
  */
 public class {{entityName}}Params extends {{entityName}}{
     private int page;

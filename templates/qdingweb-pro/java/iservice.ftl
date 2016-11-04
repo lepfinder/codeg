@@ -6,7 +6,6 @@ import {{project.packageName}}.common.ModelResult;
 import {{project.packageName}}.domain.{{entityName}};
 
 /**
- * Created by xiexiyang on 15/4/11.
  */
 public interface I{{entityName}}Service {
 
