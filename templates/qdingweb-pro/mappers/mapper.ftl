@@ -68,10 +68,10 @@
         <if test="id != null">
             and t.id = #{id}
         </if>
-        {% for field in entity.fieldList %}{% if field.isSearchable==1 %}
+        {% for field in entity.fieldList %}
         <if test="{{field.javaName}} != null">
             and t.{{field.dbName}} = #{ {{field.javaName}} }
-        </if>{% endif %}{% endfor %}
+        </if>{% endfor %}
     </select>
 
     <select id="getPageListByParam" parameterType="java.util.HashMap" resultMap="BaseResultMap">
@@ -81,10 +81,10 @@
         <if test="id != null">
             and t.id = #{id}
         </if>
-        {% for field in entity.fieldList %}{% if field.isSearchable==1 %}
+        {% for field in entity.fieldList %}
         <if test="{{field.javaName}} != null">
             and t.{{field.dbName}} = #{ {{field.javaName}} }
-        </if>{% endif %}{% endfor %}
+        </if>{% endfor %}
         order by t.id desc
         <if test="startIndex != null and pageSize !=null ">
             limit #{startIndex}, #{pageSize}
