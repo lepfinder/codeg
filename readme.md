@@ -2,14 +2,6 @@
 
 codeg是一个轻量级的代码生成器内核（代码仅300行左右），基于Python和jinja2开发，你可以定制自己的项目模板，快速生成可以直接运行的工程项目。
 
-## 背景
-
-考虑一个新项目的开发步骤，
-1. 根据需求设计出数据结构
-2. 
-
-
-
 
 ## 功能特点
 1. 根据数据库连接配置可以支持直接生成java工程
@@ -44,14 +36,12 @@ cd ~/workspace/codeg
 . venv/bin/activate
 pip install -r requirements.txt
 
-以上是mac上的操作
-如果 windows 自己研究 
+以上是mac上的操作,如果 windows 自己研究 
 ```
 
-
-
-2. 修改project_def目录下的qdingweb-base.json配置文件
+2. 修改project_def目录下的qdingweb-base.json配置文件,支持MYSQL或ORACLE数据库。
 ```
+MYSQL:
 {
   "project": {
     "folder_name": "qding-brick",
@@ -74,10 +64,31 @@ pip install -r requirements.txt
 }
 ```
 
+``` 
+ORACLE:
+{
+  "project": {
+    "folder_name": "qding-oracle",
+    "name": "oracle",
+    "desc": "反作弊系统",
+    "packageName": "com.qding.oracle"
+  },
+  "dbinfo": {
+    "type": "oracle",
+    "host": "10.37.223.134",
+    "port": "1521",
+    "name": "orcl",
+    "username": "SCOTT",
+    "password": "a"
+  }
+}
+```
+
 3. 执行根目录的codeg.py可以生成demo工程，在target目录中可以查看生成好的代码。
 ```
 python codeg.py
 ```
+
 
 manager.py中可以指定使用的项目配置文件，在有多个工程的时候会比较有用。
 ```
