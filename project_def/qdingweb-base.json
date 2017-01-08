@@ -6,6 +6,7 @@
     "packageName": "com.qding.shield"
   },
   "dbinfo": {
+    "type": "mysql",
     "host": "10.37.253.31",
     "port": "3307",
     "name": "qding_shield",

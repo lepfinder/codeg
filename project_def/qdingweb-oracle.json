@@ -1,0 +1,16 @@
+{
+  "project": {
+    "folder_name": "qding-oracle",
+    "name": "oracle",
+    "desc": "反作弊系统",
+    "packageName": "com.qding.oracle"
+  },
+  "dbinfo": {
+    "type": "oracle",
+    "host": "10.37.223.134",
+    "port": "1521",
+    "name": "orcl",
+    "username": "SCOTT",
+    "password": "a"
+  }
+}

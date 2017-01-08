@@ -114,10 +114,14 @@ class Manager():
         if not pdef['project'].has_key('group'):
             pdef['project']['group'] = "qdingweb-pro"
 
+        if not pdef['dbinfo'].has_key('type'):
+            pdef['dbinfo']['type'] = "mysql"
+
         self.project = Project(
             pdef['project']['folder_name'],
             pdef['project']['name'],
             pdef['project']['desc'],
+            pdef['dbinfo']['type'],
             pdef['dbinfo']['host'],
             pdef['dbinfo']['port'],
             pdef['dbinfo']['name'],
@@ -128,39 +132,47 @@ class Manager():
             self.group_def[pdef['project']['group']]
         )
 
-        engine = create_engine('mysql://%s:%s@%s:%s/%s' % (
+        db_url = 'mysql://%s:%s@%s:%s/%s'
+        schema_sql = """
+            select TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,COLUMN_COMMENT 
+            from information_schema.`COLUMNS`  where 
+            TABLE_SCHEMA = '%s' 
+            """ % self.project.db_name
+        if self.project.db_type == 'oracle':
+            db_url = 'oracle://%s:%s@%s:%s/%s'
+            schema_sql = """
+            select a.OWNER,a.TABLE_NAME,a.COLUMN_NAME,b.COMMENTS 
+            from all_tab_cols a inner join user_col_comments b on a.COLUMN_NAME = b.COLUMN_NAME
+            where a.owner = '%s'
+            """ % self.project.db_username
+
+        engine = create_engine(db_url % (
         self.project.db_username, self.project.db_password, self.project.db_host, self.project.db_port,
         self.project.db_name))
+
+        #engine = create_engine('oracle://scott:a@10.37.223.134:1521/orcl')
+
         insp = reflection.Inspector.from_engine(engine)
         # print insp.get_table_names()
 
-        self.dbconn = MySQLdb.connect(
-            host=self.project.db_host,
-            port=int(self.project.db_port),
-            user=self.project.db_username,
-            passwd=self.project.db_password,
-            connect_timeout=6000,
-            charset='utf8'
-        )
-        self.cur = self.dbconn.cursor()
+        self.dbconn = engine.connect()
 
         self.field_dict = {}
         try:
-            sql = """
-            select TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,COLUMN_COMMENT 
-            from information_schema.`COLUMNS`  where 
-            TABLE_SCHEMA = '%s'
-            """
-            results = self.cur.fetchmany(self.cur.execute(sql % self.project.db_name))
+            
+            results = self.dbconn.execute(schema_sql).fetchall()
 
+            print results
             for r in results:
                 # print r[3].encode('utf-8')
-                self.field_dict[(r[1], r[2])] = r[3].encode('utf-8')
+                if r[3]:
+                    self.field_dict[(r[1], r[2])] = r[3].encode('utf-8')
         except Exception, e:
             print e
-            print sql
-        self.cur.close()
+            print schema_sql
         self.dbconn.close()
+
+        print self.field_dict
 
         # 加载项目实体定义
         entityList = []

@@ -5,3 +5,7 @@
 - 修改log4j使用properties的方式,删除log4j.xml文件
 
 - 补全remote接口
+
+
+## 2017-01-08
+- 支持Oracle数据库

@@ -9,11 +9,12 @@ import time
 
 
 class Project():
-    def __init__(self, folder_name, name, desc, db_host, db_port, db_name, db_username, db_password, db_tables,
+    def __init__(self, folder_name, name, desc, db_type, db_host, db_port, db_name, db_username, db_password, db_tables,
                  packageName, group):
         self.folder_name = folder_name
         self.name = name
         self.desc = desc
+        self.db_type = db_type
         self.db_host = db_host
         self.db_port = db_port
         self.db_name = db_name
