@@ -1,16 +1,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true"%>
 <%
+    String frontBranch = "qding";
     String version = "15";
-    String staticHost = "http://front.qdingnet.com";
+    String staticHost = "//front.qdingnet.com";
     String env = request.getServerName().split("\\.")[0];
-    if (env.equalsIgnoreCase("boss")) {
-        staticHost = "http://front.qdingnet.com";
-    }else if(env.equalsIgnoreCase("qaboss")){
-        staticHost = "http://qafront.qdingnet.com";
+    if (env.equalsIgnoreCase("boss") || env.equalsIgnoreCase("qd")) {
+        staticHost = "//front.qdingnet.com";
+    }else if(env.equalsIgnoreCase("qaboss") || env.equalsIgnoreCase("qaqd")){
+        staticHost = "//qafront.qdingnet.com";
     }else if(env.equalsIgnoreCase("devboss")){
-        staticHost = "http://devfront.qdingnet.com";
+        staticHost = "//devfront.qdingnet.com";
     }else if(env.startsWith("http://localhost") || env.startsWith("127")){
-        staticHost = "http://localhost";
+        staticHost = "//localhost";
+    }else if (env.equalsIgnoreCase("finance")) { //财务后台
+        staticHost = "//front.qdingnet.com";
+        frontBranch = "finance";
+    }else if(env.equalsIgnoreCase("qafinance")){
+        staticHost = "//qafront.qdingnet.com";
+        frontBranch = "finance";
+    }else if(env.equalsIgnoreCase("devfinance")){
+        staticHost ="//devfront.qdingnet.com";
+        frontBranch = "finance";
     }
 %>
 <!DOCTYPE html>
