@@ -148,7 +148,7 @@ class Manager():
 
         engine = create_engine(db_url % (
         self.project.db_username, self.project.db_password, self.project.db_host, self.project.db_port,
-        self.project.db_name))
+        self.project.db_name)，encoding='utf8')
 
         #engine = create_engine('oracle://scott:a@10.37.223.134:1521/orcl')
 
