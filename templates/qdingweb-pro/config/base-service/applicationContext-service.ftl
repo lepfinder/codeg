@@ -40,6 +40,7 @@
                 <value>classpath:/jdbc.properties</value>
                 <value>classpath:/dictionary.properties</value>
                 <value>classpath:/shiro_redis.properties</value>
+                <value>classpath:/dubbo.properties</value>
             </list>
         </property>
     </bean>

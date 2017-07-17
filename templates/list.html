@@ -4,7 +4,7 @@
 	<title>codeg</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- 新 Bootstrap 核心 CSS 文件 -->
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -43,11 +43,11 @@
 			</tr>
 			{% for p in projects %}
 			<tr>
-				<td>{{ p.create_at }}</td>
-				<td>{{ p.name }}</td>
-				<td><pre>{{ p.config }}</pre></td>
+				<td width="10%"> {{ p.create_at }}</td>
+				<td width="10%">{{ p.name }}</td>
+				<td width="70%"><pre>{{ p.config }}</pre></td>
 
-				<td><a class="btn btn-info" href="/download/{{p.id}}">下载</a></td>
+				<td width="10%"><a class="btn btn-info" href="/download/{{p.id}}">下载</a></td>
 			</tr>
 			{% endfor %}
 		</table>
@@ -57,6 +57,6 @@
 	<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-	<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

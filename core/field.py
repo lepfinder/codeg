@@ -26,6 +26,8 @@ class Field():
 
         if self.dbType.startswith('VARCHAR'):
             return "String"
+        if self.dbType.startswith('CHAR'):
+            return "String"
         if self.dbType.startswith('BIGINT'):
             return "Long"
         if self.dbType.startswith('INTEGER'):

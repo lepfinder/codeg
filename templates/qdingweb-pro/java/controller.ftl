@@ -69,8 +69,11 @@ public class {{entityName}}Controller extends MultiActionController {
         logger.info("update {{entity.name}}.");
 
         ModelResult modelResult = new ModelResult(ModelResult.CODE_200);
+        {{entityName}} entity = {{entity.name}}Service.update{{entityName}}({{entity.name}});
 
         modelResult.setMessage("操作成功");
+        modelResult.setEntity(entity);
+
         return modelResult;
     }
 

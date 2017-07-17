@@ -25,7 +25,7 @@ public interface I{{entityName}}Service {
 
     /**
      * 更新{{entity.name}}
-     * @param user {{entity.label}}
+     * @param {{entity.name}}) {{entity.label}}
      * @return
      */
     {{entityName}} update{{entityName}}({{entityName}} {{entity.name}});

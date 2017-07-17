@@ -636,6 +636,13 @@
           "templatePath": "prop/dictionary.ftl"
         },
         {
+          "name": "service-dubbo",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/resources",
+          "filename": "dubbo.properties",
+          "templatePath": "prop/dubbo.ftl"
+        },
+        {
           "name": "service-shiro-redis",
           "type": "single",
           "folder": "{{project.name}}-service/src/main/resources",

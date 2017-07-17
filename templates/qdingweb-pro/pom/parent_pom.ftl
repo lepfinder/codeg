@@ -65,8 +65,7 @@
 		<quartz.version>1.5.2</quartz.version>
 		<passport.version>1.0</passport.version>
 		<dictionary-client>3.0.1-SNAPSHOT</dictionary-client>
-		<order-api.version>0.0.1-SNAPSHOT</order-api.version>
-		<imessage.version>0.0.1-SNAPSHOT</imessage.version>
+		<imessage.version>0.0.2-SNAPSHOT</imessage.version>
 		<schedule-client.version>0.0.1-SNAPSHOT</schedule-client.version>
         <dictionary-client>3.0.2-SNAPSHOT</dictionary-client>
 	</properties>
@@ -258,12 +257,6 @@
 				<scope>provided</scope>
 			</dependency>
 			
-			
-			<dependency>
-				<groupId>com.mchange</groupId>
-				<artifactId>c3p0</artifactId>
-				<version>${c3p0.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
