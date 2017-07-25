@@ -7,18 +7,18 @@ import java.util.List;
 
 public interface I{{entityName}}Dao {
 
-    public Long insert({{entityName}} {{entity.name}});
+    Long insert({{entityName}} {{entity.name}});
 
-    public Long updateById({{entityName}} {{entity.name}});
+    Long updateById({{entityName}} {{entity.name}});
 
-    public Long batchInsert(List<{{entityName}}> list);
+    Long batchInsert(List<{{entityName}}> list);
 
-    public {{entityName}} selectById(String id);
+    {{entityName}} selectById(String id);
 
-    public List<{{entityName}}> getPageListByParam(HashMap<String, Object> param);
+    List<{{entityName}}> getPageListByParam(HashMap<String, Object> param);
 
-    public Integer getPageCountByParam(HashMap<String, Object> paramMap);
+    Integer getPageCountByParam(HashMap<String, Object> paramMap);
 
-    public void deleteById(String id);
+    void deleteById(String id);
 
 }

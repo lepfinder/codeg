@@ -39,7 +39,7 @@ class Field():
         if self.dbType.startswith('DATE'):
             return "Date"
         if self.dbType.startswith('TINYINT'):
-            return "Date"
+            return "Integer"
         if self.dbType.startswith('TIMESTAMP'):
             return "Date"
         if self.dbType.startswith('DECIMAL'):
