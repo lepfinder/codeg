@@ -1,185 +1,38 @@
 {
   "groupdef": [
     {
-      "name": "jfinal-web",
-      "templateName": "jfinalweb",
-      "staticFileName": "dwz",
-      "taskdef": [
-        {
-          "name": "model",
-          "type": "multiple",
-          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
-          "filename": "{{entity.name.lower() | capitalize}}.java",
-          "templatePath": "java/model.ftl"
-        },
-        {
-          "name": "ddl",
-          "type": "single",
-          "folder": "sql",
-          "filename": "{{project.name}}.sql",
-          "templatePath": "db/mysql/ddl.ftl"
-        },
-        {
-          "name": "appconfig",
-          "type": "single",
-          "folder": "src/main/java/{{project.packageName.replace('.','/')}}",
-          "filename": "{{project.name | capitalize }}Config.java",
-          "templatePath": "java/config.ftl"
-        },
-        {
-          "name": "config",
-          "type": "single",
-          "folder": "src/main/resources",
-          "filename": "config.txt",
-          "templatePath": "config/txt.ftl"
-        },
-        {
-          "name": "webxml",
-          "type": "single",
-          "folder": "src/main/webapp/WEB-INF",
-          "filename": "web.xml",
-          "templatePath": "config/web.ftl"
-        },
-        {
-          "name": "indexController",
-          "type": "single",
-          "folder": "src/main/java/{{project.packageName.replace('.','/')}}",
-          "filename": "IndexController.java",
-          "templatePath": "java/index.ftl"
-        },
-        {
-          "name": "validate",
-          "type": "multiple",
-          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
-          "filename": "{{entity.name.lower() | capitalize}}Validator.java",
-          "templatePath": "java/validator.ftl"
-        },
-        {
-          "name": "controller",
-          "type": "multiple",
-          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
-          "filename": "{{entity.name.lower() | capitalize}}Controller.java",
-          "templatePath": "java/controller.ftl"
-        },
-        {
-          "name": "searcher",
-          "type": "multiple",
-          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
-          "filename": "{{entity.name.lower() | capitalize}}Searcher.java",
-          "templatePath": "java/searcher.ftl"
-        },
-        {
-          "name": "add",
-          "type": "multiple",
-          "folder": "src/main/webapp/{{entity.name}}",
-          "filename": "add.html",
-          "templatePath": "view/dwz/freemarker/add.ftl"
-        },
-        {
-          "name": "log4j",
-          "type": "single",
-          "folder": "src/main/resources",
-          "filename": "log4j.properties",
-          "templatePath": "config/log4j.ftl"
-        },
-        {
-          "name": "index",
-          "type": "single",
-          "folder": "src/main/webapp",
-          "filename": "index.html",
-          "templatePath": "view/dwz/freemarker/index.ftl"
-        },
-        {
-          "name": "menu",
-          "type": "single",
-          "folder": "src/main/webapp",
-          "filename": "menu.html",
-          "templatePath": "view/dwz/freemarker/menu.ftl"
-        },
-        {
-          "name": "edit",
-          "type": "multiple",
-          "folder": "src/main/webapp/{{entity.name}}",
-          "filename": "edit.html",
-          "templatePath": "view/dwz/freemarker/edit.ftl"
-        },
-        {
-          "name": "form",
-          "type": "multiple",
-          "folder": "src/main/webapp/{{entity.name}}",
-          "filename": "_form.html",
-          "templatePath": "view/dwz/freemarker/_form.ftl"
-        },
-        {
-          "name": "page",
-          "type": "multiple",
-          "folder": "src/main/webapp/{{entity.name}}",
-          "filename": "index.html",
-          "templatePath": "view/dwz/freemarker/page.ftl"
-        },
-        {
-          "name": "view",
-          "type": "multiple",
-          "folder": "src/main/webapp/{{entity.name}}",
-          "filename": "view.html",
-          "templatePath": "view/dwz/freemarker/view.ftl"
-        },
-        {
-          "name": "build",
-          "type": "single",
-          "folder": "",
-          "filename": "pom.xml",
-          "templatePath": "build/maven.ftl"
-        },
-        {
-          "name": "runscript",
-          "type": "single",
-          "folder": "",
-          "filename": "run.bat",
-          "templatePath": "build/run.ftl"
-        },
-        {
-          "name": "runscript",
-          "type": "single",
-          "folder": "",
-          "filename": "run.sh",
-          "templatePath": "build/run.ftl"
-        }
-      ]
-    },
-    {
-      "name": "mybatis-base",
-      "templateName": "mybatis-base",
+      "name": "qdingweb-v3",
+      "templateName": "qdingweb-v3",
       "staticFileName": "",
       "taskdef": [
         {
-          "name": "model",
-          "type": "multiple",
-          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/domain",
-          "filename": "{{entity.name.lower() | capitalize}}.java",
-          "templatePath": "java/model.ftl"
+          "name": "mkdir",
+          "type": "make-mvn-module",
+          "folder": "service",
+          "filename": "",
+          "templatePath": "codeg.json"
         },
         {
-          "name": "dao",
-          "type": "multiple",
-          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/dao",
-          "filename": "I{{entity.name.lower() | capitalize}}Dao.java",
-          "templatePath": "java/dao.ftl"
+          "name": "mkdir",
+          "type": "make-mvn-module",
+          "folder": "common",
+          "filename": "",
+          "templatePath": ""
         },
         {
-          "name": "mapper",
-          "type": "multiple",
-          "folder": "src/main/resources/mapper",
-          "filename": "{{entity.name.lower()}}.xml",
-          "templatePath": "mappers/mapper.ftl"
-        }
-      ]
-    },
-    {
-      "name": "qdingweb",
-      "templateName": "qdingweb-base",
-      "staticFileName": "",
-      "taskdef": [
+          "name": "mkdir",
+          "type": "make-mvn-module",
+          "folder": "remote",
+          "filename": "",
+          "templatePath": ""
+        },
+        {
+          "name": "mkdir",
+          "type": "make-mvn-module",
+          "folder": "admin-web",
+          "filename": "",
+          "templatePath": ""
+        },
         {
           "name": "model",
           "type": "multiple",
@@ -244,6 +97,13 @@
           "templatePath": "java/common/PageUtil.ftl"
         },
         {
+          "name": "TracerLogAspect",
+          "type": "single",
+          "folder": "{{project.name}}-service/src/main/java/{{project.packageName.replace('.','/')}}/service/log",
+          "filename": "TracerLogAspect.java",
+          "templatePath": "java/TracerLogAspect.ftl"
+        },
+        {
           "name": "mapper",
           "type": "multiple",
           "folder": "{{project.name}}-service/src/main/resources/mapper",
@@ -286,11 +146,95 @@
           "templatePath": "pom/remote_pom.ftl"
         },
         {
+          "name": "admin-spring-servlet",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/resources",
+          "filename": "spring-servlet.xml",
+          "templatePath": "config/admin-web/spring-servlet.ftl"
+        },
+        {
+          "name": "admin-applicationContext",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/resources",
+          "filename": "applicationContext.xml",
+          "templatePath": "config/remote-web/applicationContext.ftl"
+        },
+        {
           "name": "admin-applicationContext",
           "type": "single",
           "folder": "{{project.name}}-admin-web/src/main/resources",
           "filename": "applicationContext.xml",
           "templatePath": "config/admin-web/applicationContext.ftl"
+        },
+        {
+          "name": "admin-dictionary-config",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/resources",
+          "filename": "dictionary-config.xml",
+          "templatePath": "config/admin-web/dictionary-config.ftl"
+        },
+        {
+          "name": "admin-applicationContext-shiro",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/resources",
+          "filename": "applicationContext-shiro.xml",
+          "templatePath": "config/admin-web/applicationContext-shiro.ftl"
+        },
+        {
+          "name": "admin-disconf",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/resources",
+          "filename": "disconf.properties",
+          "templatePath": "prop/disconf.ftl"
+        },
+        {
+          "name": "admin-log4j",
+          "type": "single",
+          "folder": "{{project.name}}-admin-web/src/main/resources",
+          "filename": "log4j.properties",
+          "templatePath": "prop/log4j.ftl"
+        },
+        {
+          "name": "remote-applicationContext",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/resources",
+          "filename": "applicationContext-remote-servlet.xml",
+          "templatePath": "config/remote-web/applicationContext-remote-servlet.ftl"
+        },
+        {
+          "name": "remote-applicationContext-dubbo",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/resources",
+          "filename": "applicationContext-dubbo.xml",
+          "templatePath": "config/remote-web/applicationContext-dubbo.ftl"
+        },
+        {
+          "name": "remote-disconf",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/resources",
+          "filename": "disconf.properties",
+          "templatePath": "prop/disconf.ftl"
+        },
+        {
+          "name": "remote-dictionary-config",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/resources",
+          "filename": "dictionary-config.xml",
+          "templatePath": "config/remote-web/dictionary-config.ftl"
+        },
+        {
+          "name": "remote-log4j",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/resources",
+          "filename": "log4j.properties",
+          "templatePath": "prop/log4j.ftl"
+        },
+        {
+          "name": "common-applicationContext",
+          "type": "single",
+          "folder": "{{project.name}}-common/src/main/resources",
+          "filename": "applicationContext-common.xml",
+          "templatePath": "config/base-client/applicationContext-common.ftl"
         },
         {
           "name": "service-applicationContext-jdbc",
@@ -300,20 +244,6 @@
           "templatePath": "config/base-service/applicationContext-jdbc.ftl"
         },
         {
-          "name": "service-applicationContext-service",
-          "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
-          "filename": "applicationContext-service.xml",
-          "templatePath": "config/base-service/applicationContext-service.ftl"
-        },
-        {
-          "name": "service-remote",
-          "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
-          "filename": "spring-remote-common.xml",
-          "templatePath": "config/base-service/spring-remote-common.ftl"
-        },
-        {
           "name": "service-sqlMapConfig",
           "type": "single",
           "folder": "{{project.name}}-service/src/main/resources",
@@ -321,11 +251,32 @@
           "templatePath": "config/base-service/sqlMapConfig.ftl"
         },
         {
-          "name": "service-log4j",
+          "name": "service-jdbc",
           "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
-          "filename": "log4j.xml",
-          "templatePath": "config/log4j.ftl"
+          "folder": "disconf-properties",
+          "filename": "jdbc.properties",
+          "templatePath": "prop/jdbc.ftl"
+        },
+        {
+          "name": "service-dictionary",
+          "type": "single",
+          "folder": "disconf-properties",
+          "filename": "dictionary.properties",
+          "templatePath": "prop/dictionary.ftl"
+        },
+        {
+          "name": "service-dubbo",
+          "type": "single",
+          "folder": "disconf-properties",
+          "filename": "dubbo.properties",
+          "templatePath": "prop/dubbo.ftl"
+        },
+        {
+          "name": "service-shiro-redis",
+          "type": "single",
+          "folder": "disconf-properties",
+          "filename": "shiro_redis.properties",
+          "templatePath": "prop/shiro_redis.ftl"
         },
         {
           "name": "front-controllers",
@@ -388,7 +339,14 @@
           "type": "single",
           "folder": "{{project.name}}-admin-web/src/main/webapp/WEB-INF",
           "filename": "web.xml",
-          "templatePath": "build/web.ftl"
+          "templatePath": "config/admin-web/web.ftl"
+        },
+        {
+          "name": "webxml-remote",
+          "type": "single",
+          "folder": "{{project.name}}-remote/src/main/webapp/WEB-INF",
+          "filename": "web.xml",
+          "templatePath": "config/remote-web/web.ftl"
         },
         {
           "name": "index-jsp",
@@ -396,6 +354,12 @@
           "folder": "{{project.name}}-admin-web/src/main/webapp/pages",
           "filename": "index.jsp",
           "templatePath": "jsp/index.ftl"
+        },{
+          "name": "data-config",
+          "type": "multiple",
+          "folder": "front/data-config",
+          "filename": "{{entity.name}}.xml",
+          "templatePath": "front/data_config.ftl"
         }
       ]
     },
@@ -582,7 +546,7 @@
         {
           "name": "service-applicationContext-service",
           "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
+          "folder": "{{project.name}}-admin-web/src/main/resources",
           "filename": "applicationContext-service.xml",
           "templatePath": "config/base-service/applicationContext-service.ftl"
         },
@@ -603,7 +567,7 @@
         {
           "name": "service-log4j",
           "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
+          "folder": "disconf-properties",
           "filename": "log4j.properties",
           "templatePath": "prop/log4j.ftl"
         },
@@ -617,35 +581,35 @@
         {
           "name": "service-jdbc",
           "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
+          "folder": "disconf-properties",
           "filename": "jdbc.properties",
           "templatePath": "prop/jdbc.ftl"
         },
         {
           "name": "service-rpc",
           "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
+          "folder": "disconf-properties",
           "filename": "rpc.properties",
           "templatePath": "prop/rpc.ftl"
         },
         {
           "name": "service-dictionary",
           "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
+          "folder": "disconf-properties",
           "filename": "dictionary.properties",
           "templatePath": "prop/dictionary.ftl"
         },
         {
           "name": "service-dubbo",
           "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
+          "folder": "disconf-properties",
           "filename": "dubbo.properties",
           "templatePath": "prop/dubbo.ftl"
         },
         {
           "name": "service-shiro-redis",
           "type": "single",
-          "folder": "{{project.name}}-service/src/main/resources",
+          "folder": "disconf-properties",
           "filename": "shiro_redis.properties",
           "templatePath": "prop/shiro_redis.ftl"
         },
@@ -725,9 +689,191 @@
           "folder": "{{project.name}}-admin-web/src/main/webapp/pages",
           "filename": "index.jsp",
           "templatePath": "jsp/index.ftl"
+        },{
+          "name": "data-config",
+          "type": "multiple",
+          "folder": "front/data-config",
+          "filename": "{{entity.name}}.xml",
+          "templatePath": "front/data_config.ftl"
         }
       ]
     },
+    {
+      "name": "jfinal-web",
+      "templateName": "jfinalweb",
+      "staticFileName": "dwz",
+      "taskdef": [
+        {
+          "name": "model",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
+          "filename": "{{entity.name.lower() | capitalize}}.java",
+          "templatePath": "java/model.ftl"
+        },
+        {
+          "name": "ddl",
+          "type": "single",
+          "folder": "sql",
+          "filename": "{{project.name}}.sql",
+          "templatePath": "db/mysql/ddl.ftl"
+        },
+        {
+          "name": "appconfig",
+          "type": "single",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}",
+          "filename": "{{project.name | capitalize }}Config.java",
+          "templatePath": "java/config.ftl"
+        },
+        {
+          "name": "config",
+          "type": "single",
+          "folder": "src/main/resources",
+          "filename": "config.txt",
+          "templatePath": "config/txt.ftl"
+        },
+        {
+          "name": "webxml",
+          "type": "single",
+          "folder": "src/main/webapp/WEB-INF",
+          "filename": "web.xml",
+          "templatePath": "config/web.ftl"
+        },
+        {
+          "name": "indexController",
+          "type": "single",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}",
+          "filename": "IndexController.java",
+          "templatePath": "java/index.ftl"
+        },
+        {
+          "name": "validate",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
+          "filename": "{{entity.name.lower() | capitalize}}Validator.java",
+          "templatePath": "java/validator.ftl"
+        },
+        {
+          "name": "controller",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
+          "filename": "{{entity.name.lower() | capitalize}}Controller.java",
+          "templatePath": "java/controller.ftl"
+        },
+        {
+          "name": "searcher",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/{{entity.name}}",
+          "filename": "{{entity.name.lower() | capitalize}}Searcher.java",
+          "templatePath": "java/searcher.ftl"
+        },
+        {
+          "name": "add",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "add.html",
+          "templatePath": "view/dwz/freemarker/add.ftl"
+        },
+        {
+          "name": "log4j",
+          "type": "single",
+          "folder": "src/main/resources",
+          "filename": "log4j.properties",
+          "templatePath": "config/log4j.ftl"
+        },
+        {
+          "name": "index",
+          "type": "single",
+          "folder": "src/main/webapp",
+          "filename": "index.html",
+          "templatePath": "view/dwz/freemarker/index.ftl"
+        },
+        {
+          "name": "menu",
+          "type": "single",
+          "folder": "src/main/webapp",
+          "filename": "menu.html",
+          "templatePath": "view/dwz/freemarker/menu.ftl"
+        },
+        {
+          "name": "edit",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "edit.html",
+          "templatePath": "view/dwz/freemarker/edit.ftl"
+        },
+        {
+          "name": "form",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "_form.html",
+          "templatePath": "view/dwz/freemarker/_form.ftl"
+        },
+        {
+          "name": "page",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "index.html",
+          "templatePath": "view/dwz/freemarker/page.ftl"
+        },
+        {
+          "name": "view",
+          "type": "multiple",
+          "folder": "src/main/webapp/{{entity.name}}",
+          "filename": "view.html",
+          "templatePath": "view/dwz/freemarker/view.ftl"
+        },
+        {
+          "name": "build",
+          "type": "single",
+          "folder": "",
+          "filename": "pom.xml",
+          "templatePath": "build/maven.ftl"
+        },
+        {
+          "name": "runscript",
+          "type": "single",
+          "folder": "",
+          "filename": "run.bat",
+          "templatePath": "build/run.ftl"
+        },
+        {
+          "name": "runscript",
+          "type": "single",
+          "folder": "",
+          "filename": "run.sh",
+          "templatePath": "build/run.ftl"
+        }
+      ]
+    },
+    {
+      "name": "mybatis-base",
+      "templateName": "mybatis-base",
+      "staticFileName": "",
+      "taskdef": [
+        {
+          "name": "model",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/domain",
+          "filename": "{{entity.name.lower() | capitalize}}.java",
+          "templatePath": "java/model.ftl"
+        },
+        {
+          "name": "dao",
+          "type": "multiple",
+          "folder": "src/main/java/{{project.packageName.replace('.','/')}}/dao",
+          "filename": "I{{entity.name.lower() | capitalize}}Dao.java",
+          "templatePath": "java/dao.ftl"
+        },
+        {
+          "name": "mapper",
+          "type": "multiple",
+          "folder": "src/main/resources/mapper",
+          "filename": "{{entity.name.lower()}}.xml",
+          "templatePath": "mappers/mapper.ftl"
+        }
+      ]
+    },
+    
     {
       "name": "flask-web",
       "templateName": "flask-web",

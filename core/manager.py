@@ -112,7 +112,7 @@ class Manager():
         # print pdef
         # 加载项目定义信息
         if not pdef['project'].has_key('group'):
-            pdef['project']['group'] = "qdingweb-pro"
+            pdef['project']['group'] = "qdingweb-v3"
 
         if not pdef['dbinfo'].has_key('type'):
             pdef['dbinfo']['type'] = "mysql"

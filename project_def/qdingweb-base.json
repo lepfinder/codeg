@@ -1,15 +1,14 @@
 {
   "project": {
-    "folder_name": "qding-shield",
-    "name": "shield",
-    "desc": "反作弊系统",
-    "packageName": "com.qding.shield"
+    "folder_name": "qding-phoenix",
+    "name": "phoenix",
+    "desc": "售后系统",
+    "packageName": "com.qding.phoenix"
   },
   "dbinfo": {
-    "type": "mysql",
-    "host": "10.37.253.31",
+    "host": "10.37.253.42",
     "port": "3307",
-    "name": "qding_shield",
+    "name": "qding_phoenix",
     "username": "dev",
     "password": "458kT*!W"
   }
